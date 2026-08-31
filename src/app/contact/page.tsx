@@ -201,8 +201,6 @@ export default function ContactPage() {
           )}
         </div>
       </main>
-
-      {/* Clean Footer */}
       <Footer />
     </div>
   );
