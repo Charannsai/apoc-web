@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -10,12 +11,23 @@ export function Footer() {
       <div className="absolute inset-x-0 -top-8 h-8 bg-gradient-to-t from-white dark:from-[#050506] to-transparent pointer-events-none" />
 
       <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-4">
-        {/* Left: Copyright */}
-        <div className="text-zinc-500 text-xs">
-          © 2026 Apoc Systems. All rights reserved.
+        {/* Left: Brand Logo & Copyright */}
+        <div className="flex items-center gap-3">
+          <Link href="/" className="inline-flex items-center">
+            <Image
+              src="/apoclogo.png"
+              alt="APOC"
+              width={85}
+              height={22}
+              className="h-5 w-auto object-contain dark:invert dark:hue-rotate-180 opacity-75 hover:opacity-100 transition-opacity"
+            />
+          </Link>
+          <span className="text-zinc-500 text-xs">
+            © 2026 Apoc Systems. All rights reserved.
+          </span>
         </div>
 
-        {/* Right: Real Legal Pages Links */}
+        {/* Right: Legal Links */}
         <div className="flex items-center gap-6 text-xs">
           <Link
             href="/terms"

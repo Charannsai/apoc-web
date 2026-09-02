@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Footer } from "@/components/Footer";
@@ -17,12 +18,18 @@ export default function TermsPage() {
             className="flex items-center gap-2 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Back to Apoc</span>
+            <span>Back to Home</span>
           </Link>
           <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold tracking-tight text-zinc-900 dark:text-white">
-              Apoc
-            </span>
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/apoclogo.png"
+                alt="APOC"
+                width={95}
+                height={26}
+                className="h-6 w-auto object-contain dark:invert dark:hue-rotate-180"
+              />
+            </Link>
             <ThemeToggle />
           </div>
         </div>
