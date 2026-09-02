@@ -17,7 +17,10 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen flex flex-col justify-between bg-white text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white font-sans">
+    <div
+      suppressHydrationWarning
+      className="relative min-h-screen flex flex-col justify-between bg-white text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white font-sans"
+    >
       {/* Background Soft Lighting & Minimal Grid */}
       <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-40" />
 
