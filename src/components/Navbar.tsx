@@ -5,10 +5,10 @@ import { ThemeToggle } from "./ThemeToggle";
 
 interface NavbarProps {
   onOpenPhilosophy: () => void;
-  onOpenWaitlist: () => void;
+  onFocusWaitlist: () => void;
 }
 
-export function Navbar({ onOpenPhilosophy, onOpenWaitlist }: NavbarProps) {
+export function Navbar({ onOpenPhilosophy, onFocusWaitlist }: NavbarProps) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#050506]/80 backdrop-blur-md transition-colors">
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
@@ -29,7 +29,7 @@ export function Navbar({ onOpenPhilosophy, onOpenWaitlist }: NavbarProps) {
           <div className="flex items-center gap-4 sm:gap-6 text-xs font-sans">
             <button
               onClick={onOpenPhilosophy}
-              className="text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+              className="text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
             >
               Philosophy
             </button>
@@ -37,10 +37,10 @@ export function Navbar({ onOpenPhilosophy, onOpenWaitlist }: NavbarProps) {
             {/* Theme Toggle */}
             <ThemeToggle />
 
-            {/* Pre-order Waitlist CTA */}
+            {/* Pre-order Waitlist Action */}
             <button
-              onClick={onOpenWaitlist}
-              className="rounded-full border border-black dark:border-white bg-black dark:bg-white px-4 py-1.5 font-medium text-white dark:text-black transition-all hover:bg-zinc-800 dark:hover:bg-zinc-200 active:scale-95"
+              onClick={onFocusWaitlist}
+              className="rounded-full border border-black dark:border-white bg-black dark:bg-white px-4 py-1.5 font-medium text-white dark:text-black transition-all hover:bg-zinc-800 dark:hover:bg-zinc-200 active:scale-95 cursor-pointer"
             >
               Pre-Order Waitlist
             </button>

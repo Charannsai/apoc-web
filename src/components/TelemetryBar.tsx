@@ -5,12 +5,12 @@ import { ThemeToggle } from "./ThemeToggle";
 
 interface TelemetryBarProps {
   onOpenPhilosophy: () => void;
-  onOpenWaitlist: () => void;
+  onFocusWaitlist: () => void;
 }
 
 export function TelemetryBar({
   onOpenPhilosophy,
-  onOpenWaitlist,
+  onFocusWaitlist,
 }: TelemetryBarProps) {
   return (
     <footer className="w-full border-t border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-[#050506] py-6 px-6 sm:px-8 text-xs text-zinc-500 font-sans transition-colors">
@@ -31,13 +31,13 @@ export function TelemetryBar({
         <div className="flex items-center gap-5 text-xs">
           <button
             onClick={onOpenPhilosophy}
-            className="text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+            className="text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
           >
             Philosophy
           </button>
           <button
-            onClick={onOpenWaitlist}
-            className="text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+            onClick={onFocusWaitlist}
+            className="text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors cursor-pointer"
           >
             Pre-Order Waitlist
           </button>

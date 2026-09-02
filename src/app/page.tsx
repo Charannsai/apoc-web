@@ -1,22 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
+import { Hero, HeroHandle } from "@/components/Hero";
 import { PhilosophyModal } from "@/components/PhilosophyModal";
 import { SystemSpecModal } from "@/components/SystemSpecModal";
-import { WaitlistModal } from "@/components/WaitlistModal";
 import { TelemetryBar } from "@/components/TelemetryBar";
 
 export default function Home() {
   const [isPhilosophyOpen, setIsPhilosophyOpen] = useState(false);
   const [isSpecModalOpen, setIsSpecModalOpen] = useState(false);
-  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
-  const [initialEmail, setInitialEmail] = useState("");
+  const heroRef = useRef<HeroHandle>(null);
 
-  const handleOpenWaitlist = (email?: string) => {
-    if (email) setInitialEmail(email);
-    setIsWaitlistOpen(true);
+  const handleFocusWaitlist = () => {
+    heroRef.current?.focusInput();
   };
 
   return (
@@ -28,13 +25,13 @@ export default function Home() {
       {/* Header Navigation */}
       <Navbar
         onOpenPhilosophy={() => setIsPhilosophyOpen(true)}
-        onOpenWaitlist={() => handleOpenWaitlist()}
+        onFocusWaitlist={handleFocusWaitlist}
       />
 
       {/* Main Single-Section Canvas */}
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-5xl w-full mx-auto px-4 sm:px-6 py-2">
         <Hero
-          onOpenWaitlist={handleOpenWaitlist}
+          ref={heroRef}
           onOpenSpecModal={() => setIsSpecModalOpen(true)}
         />
       </main>
@@ -43,7 +40,7 @@ export default function Home() {
       <div className="relative z-10">
         <TelemetryBar
           onOpenPhilosophy={() => setIsPhilosophyOpen(true)}
-          onOpenWaitlist={() => handleOpenWaitlist()}
+          onFocusWaitlist={handleFocusWaitlist}
         />
       </div>
 
@@ -56,12 +53,6 @@ export default function Home() {
       <SystemSpecModal
         isOpen={isSpecModalOpen}
         onClose={() => setIsSpecModalOpen(false)}
-      />
-
-      <WaitlistModal
-        isOpen={isWaitlistOpen}
-        onClose={() => setIsWaitlistOpen(false)}
-        initialEmail={initialEmail}
       />
     </div>
   );
