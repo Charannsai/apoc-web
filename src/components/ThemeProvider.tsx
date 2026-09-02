@@ -18,25 +18,36 @@ const ThemeContext = createContext<ThemeContextType>({
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("dark");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const saved = localStorage.getItem("apoc-theme") as Theme | null;
-    if (saved === "light" || saved === "dark") {
-      setThemeState(saved);
-      document.documentElement.classList.toggle("dark", saved === "dark");
+    if (saved === "light") {
+      setThemeState("light");
+      document.documentElement.classList.remove("dark");
     } else {
+      setThemeState("dark");
       document.documentElement.classList.add("dark");
     }
   }, []);
 
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
-    localStorage.setItem("apoc-theme", newTheme);
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    try {
+      localStorage.setItem("apoc-theme", newTheme);
+    } catch (e) {}
+
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   };
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
   };
 
   return (

@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Apoc - Agent Pocket | Physical AI Hardware & Agent OS",
   description:
-    "An AI infrastructure platform combining physical hardware with loaded Agent OS runtime capabilities. Zero em dashes, pure monochrome clarity.",
+    "An AI infrastructure platform combining physical hardware with loaded Agent OS runtime capabilities. Pure monochrome clarity.",
   keywords: [
     "APOC",
     "Agent Pocket",
@@ -43,6 +43,24 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} dark h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('apoc-theme');
+                  if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                  } else {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-white dark:bg-[#050506] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans transition-colors duration-200">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
