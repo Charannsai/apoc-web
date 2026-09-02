@@ -15,19 +15,70 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Apoc - Agent Pocket | Physical AI Hardware & Agent OS",
+  metadataBase: new URL("https://apoc.run"),
+  title: {
+    default: "APOC - Physical AI Hardware & Agent OS",
+    template: "%s | APOC",
+  },
   description:
-    "An AI infrastructure platform combining physical hardware with loaded Agent OS runtime capabilities. Pure monochrome clarity.",
+    "APOC (Agent Pocket) is a physical, local-first AI platform combining dedicated on-device compute with a loaded Agent OS runtime. Sovereign, private, and built for real execution.",
   keywords: [
     "APOC",
     "Agent Pocket",
-    "AI Agent Runtime",
-    "AI Hardware",
+    "APOC AI",
+    "Physical AI Hardware",
     "Agent OS",
     "Local AI Platform",
+    "Autonomous Agents",
+    "MCP Runtime",
+    "Model Context Protocol",
+    "Sovereign AI Device",
   ],
+  authors: [{ name: "APOC Systems", url: "https://apoc.run" }],
+  creator: "APOC Systems",
+  publisher: "APOC Systems",
+  alternates: {
+    canonical: "https://apoc.run",
+  },
+  openGraph: {
+    title: "APOC - Physical AI Hardware & Agent OS",
+    description:
+      "Dedicated local compute coupled with an autonomous agent runtime. Private, sovereign, and built for real execution.",
+    url: "https://apoc.run",
+    siteName: "APOC - Agent Pocket",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/apoclogo.png",
+        width: 1200,
+        height: 630,
+        alt: "APOC - Physical AI Hardware & Agent OS",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "APOC - Physical AI Hardware & Agent OS",
+    description:
+      "Dedicated local compute coupled with an autonomous agent runtime. Private, sovereign, and built for real execution.",
+    images: ["/apoclogo.png"],
+    creator: "@apoc_run",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/favicon.ico",
+    apple: "/apoclogo.png",
   },
 };
 
@@ -36,6 +87,92 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // Google Sitelinks & Rich Snippets Structured Data (Schema.org)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://apoc.run/#organization",
+        "name": "APOC Systems",
+        "url": "https://apoc.run",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://apoc.run/apoclogo.png",
+        },
+        "sameAs": ["https://x.com/apoc_run"],
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://apoc.run/#website",
+        "url": "https://apoc.run",
+        "name": "APOC - Agent Pocket",
+        "publisher": {
+          "@id": "https://apoc.run/#organization",
+        },
+      },
+      {
+        "@type": "Product",
+        "@id": "https://apoc.run/#product",
+        "name": "APOC - Agent Pocket",
+        "image": "https://apoc.run/apoclogo.png",
+        "description":
+          "A physical local-first AI platform and agentic workflow environment combining hardware control with loaded Agent OS.",
+        "brand": {
+          "@type": "Brand",
+          "name": "APOC",
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/PreOrder",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://apoc.run",
+        },
+      },
+      {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "About APOC",
+            "description": "The mission and physical hardware architecture behind Apoc.",
+            "url": "https://apoc.run/about",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Contact",
+            "description": "Pre-order inquiries, developer pilots, and enterprise partnerships.",
+            "url": "https://apoc.run/contact",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Security",
+            "description": "Capability != Authority model and hardware sandboxing.",
+            "url": "https://apoc.run/security",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "Privacy Policy",
+            "description": "Local-first sovereignty and zero cloud data ingestion.",
+            "url": "https://apoc.run/privacy",
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "Terms of Service",
+            "description": "Hardware ownership and Agent OS licensing terms.",
+            "url": "https://apoc.run/terms",
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <html
       lang="en"
@@ -43,6 +180,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

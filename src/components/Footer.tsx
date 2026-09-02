@@ -13,7 +13,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Left: Brand Logo & Copyright */}
         <div className="flex items-center gap-3">
-          <Link href="/" className="inline-flex items-center">
+          <Link href="/" className="inline-flex items-center" aria-label="Apoc Home">
             <Image
               src="/apoclogo.png"
               alt="APOC"
@@ -27,13 +27,25 @@ export function Footer() {
           </span>
         </div>
 
-        {/* Right: Legal Links */}
-        <div className="flex items-center gap-6 text-xs font-sans">
+        {/* Right: Comprehensive Sitelinks Navigation */}
+        <nav aria-label="Footer Navigation" className="flex flex-wrap items-center gap-5 sm:gap-6 text-xs font-sans">
           <Link
-            href="/terms"
+            href="/about"
             className="text-zinc-600 hover:text-black transition-colors"
           >
-            Terms
+            About
+          </Link>
+          <Link
+            href="/contact"
+            className="text-zinc-600 hover:text-black transition-colors"
+          >
+            Contact
+          </Link>
+          <Link
+            href="/security"
+            className="text-zinc-600 hover:text-black transition-colors"
+          >
+            Security
           </Link>
           <Link
             href="/privacy"
@@ -42,12 +54,12 @@ export function Footer() {
             Privacy
           </Link>
           <Link
-            href="/security"
+            href="/terms"
             className="text-zinc-600 hover:text-black transition-colors"
           >
-            Security
+            Terms
           </Link>
-        </div>
+        </nav>
       </div>
     </footer>
   );
