@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,20 +16,17 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Apoc — Agent Pocket | The Hardware & OS Control Layer for AI",
+  title: "Apoc - Agent Pocket | Physical AI Hardware & Agent OS",
   description:
-    "An intelligent local-first runtime for autonomous, tool-using software agents. Moving computing from pre-scripted automation to adaptive delegation.",
+    "An AI infrastructure platform combining physical hardware with loaded Agent OS runtime capabilities. Zero em dashes, pure monochrome clarity.",
   keywords: [
     "APOC",
     "Agent Pocket",
     "AI Agent Runtime",
+    "AI Hardware",
+    "Agent OS",
     "Local AI Platform",
-    "Agent Operating System",
-    "Monochrome UI",
-    "Autonomous Execution",
-    "MCP Runtime",
   ],
-  authors: [{ name: "APOC Systems" }],
   icons: {
     icon: "/favicon.ico",
   },
@@ -42,10 +40,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} dark h-full bg-[#050506] text-zinc-100 antialiased selection:bg-white selection:text-black`}
+      className={`${inter.variable} ${jetbrainsMono.variable} dark h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-screen bg-[#050506] text-zinc-100 flex flex-col font-sans">
-        {children}
+      <body className="min-h-screen bg-white dark:bg-[#050506] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans transition-colors duration-200">
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
