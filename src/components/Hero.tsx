@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, forwardRef, useImperativeHandle, useRef } from "react";
-import { ArrowRight, Check, Cpu, Layers, Shield, ArrowUpRight } from "lucide-react";
+import { ArrowRight, Check, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 
@@ -40,28 +40,28 @@ export const Hero = forwardRef<HeroHandle, HeroProps>(function Hero(
       particleCount: 25,
       spread: 45,
       origin: { y: 0.55 },
-      colors: ["#ffffff", "#e4e4e7", "#a1a1aa", "#000000"],
+      colors: ["#000000", "#71717a", "#d4d4d8", "#f4f4f5"],
     });
   };
 
   return (
-    <div className="relative flex flex-col items-center text-center max-w-4xl mx-auto w-full px-4 py-4 sm:py-6">
+    <div className="relative flex flex-col items-center justify-center text-center max-w-3xl mx-auto w-full px-4 py-8 sm:py-12">
       {/* Main Headline */}
-      <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-zinc-950 dark:text-white leading-[1.1] font-sans">
+      <h1 className="text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-zinc-950 leading-[1.1] font-sans">
         Physical AI hardware. <br />
-        <span className="text-zinc-500 dark:text-zinc-400 font-light italic">
+        <span className="text-zinc-500 font-light italic">
           Loaded with Agent OS.
         </span>
       </h1>
 
       {/* Short & Concise Narrative */}
-      <p className="mt-4 max-w-xl text-sm sm:text-base text-zinc-600 dark:text-zinc-400 font-normal leading-relaxed font-sans">
+      <p className="mt-5 max-w-xl text-base sm:text-lg text-zinc-600 font-normal leading-relaxed font-sans">
         Dedicated local compute coupled with an autonomous agent runtime. Private, sovereign, and built for real execution.
       </p>
 
-      {/* In-Place Pre-Order Waitlist Form / Constant Fixed Dimension Container */}
-      <div className="mt-6 sm:mt-8 flex items-center justify-center w-full">
-        <div className="relative w-full max-w-md h-[48px] rounded-full border border-black/15 dark:border-white/15 bg-zinc-50 dark:bg-zinc-900/90 shadow-sm overflow-hidden transition-colors">
+      {/* In-Place Pre-Order Waitlist Form (Fixed Dimensions) */}
+      <div className="mt-8 sm:mt-10 flex items-center justify-center w-full">
+        <div className="relative w-full max-w-md h-[48px] rounded-full border border-black/15 bg-zinc-50/90 shadow-sm overflow-hidden transition-colors">
           <AnimatePresence mode="wait" initial={false}>
             {!isSubmitted ? (
               <motion.form
@@ -80,11 +80,11 @@ export const Hero = forwardRef<HeroHandle, HeroProps>(function Hero(
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
                   placeholder="Enter your email..."
-                  className="w-full h-full bg-transparent pl-5 pr-44 text-xs sm:text-sm text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none"
+                  className="w-full h-full bg-transparent pl-5 pr-44 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
                 />
                 <button
                   type="submit"
-                  className="absolute right-1 top-1 bottom-1 rounded-full bg-black dark:bg-white px-4 text-xs font-medium text-white dark:text-black transition-all hover:bg-zinc-800 dark:hover:bg-zinc-200 active:scale-95 flex items-center gap-1 font-sans cursor-pointer whitespace-nowrap"
+                  className="absolute right-1 top-1 bottom-1 rounded-full bg-black px-4 text-xs font-medium text-white transition-all hover:bg-zinc-800 active:scale-95 flex items-center gap-1 font-sans cursor-pointer whitespace-nowrap shadow-sm"
                 >
                   <span>Join Pre-Order Waitlist</span>
                   <ArrowRight className="h-3 w-3" />
@@ -96,9 +96,9 @@ export const Hero = forwardRef<HeroHandle, HeroProps>(function Hero(
                 initial={{ opacity: 0, y: 4 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="w-full h-full flex items-center justify-center gap-2.5 px-5 text-xs sm:text-sm text-zinc-900 dark:text-white font-medium select-none"
+                className="w-full h-full flex items-center justify-center gap-2.5 px-5 text-xs sm:text-sm text-zinc-900 font-medium select-none"
               >
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-black dark:bg-white text-white dark:text-black shrink-0">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-black text-white shrink-0">
                   <Check className="h-3 w-3 stroke-[2.5]" />
                 </span>
                 <span className="truncate">
@@ -110,59 +110,14 @@ export const Hero = forwardRef<HeroHandle, HeroProps>(function Hero(
         </div>
       </div>
 
-      {/* Structured 3-Pillar Deck */}
-      <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 w-full text-left">
-        {/* Card 1 */}
-        <div className="rounded-xl border border-black/10 dark:border-white/10 bg-zinc-50/70 dark:bg-zinc-900/40 p-4 sm:p-5 backdrop-blur-sm transition-all hover:border-black/20 dark:hover:border-white/20">
-          <div className="flex items-center justify-between mb-2">
-            <Cpu className="h-4 w-4 text-zinc-900 dark:text-white" />
-            <span className="text-[10px] font-mono text-zinc-500 uppercase">HARDWARE LAYER</span>
-          </div>
-          <h3 className="text-sm font-medium text-zinc-900 dark:text-white font-sans">
-            Dedicated Local Compute
-          </h3>
-          <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans">
-            Physical execution boundary on your desk with dedicated neural compute and complete air-gapped data privacy.
-          </p>
-        </div>
-
-        {/* Card 2 */}
-        <div className="rounded-xl border border-black/10 dark:border-white/10 bg-zinc-50/70 dark:bg-zinc-900/40 p-4 sm:p-5 backdrop-blur-sm transition-all hover:border-black/20 dark:hover:border-white/20">
-          <div className="flex items-center justify-between mb-2">
-            <Layers className="h-4 w-4 text-zinc-900 dark:text-white" />
-            <span className="text-[10px] font-mono text-zinc-500 uppercase">AGENT OS</span>
-          </div>
-          <h3 className="text-sm font-medium text-zinc-900 dark:text-white font-sans">
-            Hardware Adaptability
-          </h3>
-          <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans">
-            Real-time machine introspection and dynamic capability discovery across your files, tools, and local memory.
-          </p>
-        </div>
-
-        {/* Card 3 */}
-        <div className="rounded-xl border border-black/10 dark:border-white/10 bg-zinc-50/70 dark:bg-zinc-900/40 p-4 sm:p-5 backdrop-blur-sm transition-all hover:border-black/20 dark:hover:border-white/20">
-          <div className="flex items-center justify-between mb-2">
-            <Shield className="h-4 w-4 text-zinc-900 dark:text-white" />
-            <span className="text-[10px] font-mono text-zinc-500 uppercase">CONTROL & TRUST</span>
-          </div>
-          <h3 className="text-sm font-medium text-zinc-900 dark:text-white font-sans">
-            Capability != Authority
-          </h3>
-          <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans">
-            Physical permission gates require human sign-off on sensitive operations, paired with observable evidence verification.
-          </p>
-        </div>
-      </div>
-
-      {/* Subtle Spec Trigger */}
-      <div className="mt-4 flex items-center justify-center">
+      {/* Know More about APOC in Detail (Directly below the waitlist input) */}
+      <div className="mt-6 flex items-center justify-center">
         <button
           onClick={onOpenSpecModal}
-          className="text-[11px] font-mono text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 transition-colors flex items-center gap-1 underline underline-offset-4 decoration-zinc-300 dark:decoration-zinc-700 cursor-pointer"
+          className="group text-xs sm:text-sm font-sans font-medium text-zinc-600 hover:text-black transition-colors flex items-center gap-1.5 cursor-pointer underline underline-offset-4 decoration-zinc-300 hover:decoration-black"
         >
-          <span>View Hardware + Agent OS Specification Matrix</span>
-          <ArrowUpRight className="h-3 w-3" />
+          <span>Know More about APOC in Detail</span>
+          <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </button>
       </div>
     </div>

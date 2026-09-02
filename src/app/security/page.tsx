@@ -2,39 +2,42 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Shield, Lock, Cpu, CheckCircle } from "lucide-react";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Footer } from "@/components/Footer";
 
 export default function SecurityPage() {
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-white dark:bg-[#050506] text-zinc-900 dark:text-zinc-100 font-sans transition-colors">
+    <div className="min-h-screen flex flex-col justify-between bg-white text-zinc-900 font-sans">
       {/* Top Header */}
-      <header className="sticky top-0 z-40 w-full bg-white/80 dark:bg-[#050506]/80 backdrop-blur-md">
+      <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md">
         <div className="mx-auto max-w-4xl px-6 py-4 flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-xs font-mono text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white transition-colors"
+            className="flex items-center gap-2 text-xs font-mono text-zinc-600 hover:text-black transition-colors"
           >
             <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Back to Apoc</span>
+            <span>Back to Home</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold tracking-tight text-zinc-900 dark:text-white">
-              Apoc
-            </span>
-            <ThemeToggle />
-          </div>
+          <Link href="/" className="inline-flex items-center">
+            <Image
+              src="/apoclogo.png"
+              alt="APOC"
+              width={95}
+              height={26}
+              className="h-6 w-auto object-contain"
+            />
+          </Link>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="flex-1 max-w-3xl mx-auto px-6 py-12 space-y-8">
-        <div className="space-y-2 border-b border-black/10 dark:border-white/10 pb-6">
+        <div className="space-y-2 border-b border-black/10 pb-6">
           <span className="text-xs uppercase tracking-widest text-zinc-500 font-mono">
             SECURITY & TRUST ARCHITECTURE
           </span>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-zinc-950 dark:text-white">
+          <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-zinc-950">
             Security Overview
           </h1>
           <p className="text-xs font-mono text-zinc-500">
@@ -42,9 +45,9 @@ export default function SecurityPage() {
           </p>
         </div>
 
-        <div className="space-y-6 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">
+        <div className="space-y-6 text-sm text-zinc-700 leading-relaxed font-sans">
           <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950 dark:text-white flex items-center gap-2">
+            <h2 className="text-base font-semibold text-zinc-950 flex items-center gap-2">
               <Shield className="h-4 w-4" />
               1. The Core Principle: Capability != Authority
             </h2>
@@ -57,7 +60,7 @@ export default function SecurityPage() {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950 dark:text-white flex items-center gap-2">
+            <h2 className="text-base font-semibold text-zinc-950 flex items-center gap-2">
               <Cpu className="h-4 w-4" />
               2. Hardware-Enforced Sandboxing
             </h2>
@@ -69,7 +72,7 @@ export default function SecurityPage() {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950 dark:text-white flex items-center gap-2">
+            <h2 className="text-base font-semibold text-zinc-950 flex items-center gap-2">
               <Lock className="h-4 w-4" />
               3. Cryptographic Human Sign-Off
             </h2>
@@ -81,7 +84,7 @@ export default function SecurityPage() {
           </section>
 
           <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950 dark:text-white flex items-center gap-2">
+            <h2 className="text-base font-semibold text-zinc-950 flex items-center gap-2">
               <CheckCircle className="h-4 w-4" />
               4. Evidence-Driven Outcome Verification
             </h2>
