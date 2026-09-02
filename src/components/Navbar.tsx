@@ -10,7 +10,7 @@ interface NavbarProps {
 
 export function Navbar({ onOpenPhilosophy, onFocusWaitlist }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-black/[0.08] dark:border-white/[0.08] bg-white/80 dark:bg-[#050506]/80 backdrop-blur-md transition-colors">
+    <header className="sticky top-0 z-40 w-full bg-white/70 dark:bg-[#050506]/70 backdrop-blur-md transition-colors relative">
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Brand Logo & Name */}
@@ -47,6 +47,10 @@ export function Navbar({ onOpenPhilosophy, onFocusWaitlist }: NavbarProps) {
           </div>
         </div>
       </div>
+
+      {/* Faded bottom edge separator without hard solid line */}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 -bottom-4 h-4 bg-gradient-to-b from-white/30 dark:from-[#050506]/30 to-transparent pointer-events-none" />
     </header>
   );
 }

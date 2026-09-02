@@ -13,7 +13,11 @@ export function TelemetryBar({
   onFocusWaitlist,
 }: TelemetryBarProps) {
   return (
-    <footer className="w-full border-t border-black/[0.08] dark:border-white/[0.08] bg-white dark:bg-[#050506] py-6 px-6 sm:px-8 text-xs text-zinc-500 font-sans transition-colors">
+    <footer className="w-full bg-white/70 dark:bg-[#050506]/70 backdrop-blur-md py-6 px-6 sm:px-8 text-xs text-zinc-500 font-sans transition-colors relative">
+      {/* Faded top edge separator without hard solid line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-black/10 dark:via-white/10 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 -top-4 h-4 bg-gradient-to-t from-white/30 dark:from-[#050506]/30 to-transparent pointer-events-none" />
+
       <div className="mx-auto max-w-6xl flex flex-col sm:flex-row items-center justify-between gap-4">
         {/* Left: Status */}
         <div className="flex items-center gap-4 text-xs text-zinc-600 dark:text-zinc-400">
