@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowRight, Check, Copy, Cpu } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface HeroProps {
   onOpenWaitlist: (email?: string) => void;
@@ -10,8 +10,6 @@ interface HeroProps {
 
 export function Hero({ onOpenWaitlist, onOpenPhilosophy }: HeroProps) {
   const [emailInput, setEmailInput] = useState("");
-  const [copied, setCopied] = useState(false);
-  const quickCmd = "curl -fsSL https://apoc.run | sh";
 
   const handleEmailSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,20 +21,12 @@ export function Hero({ onOpenWaitlist, onOpenPhilosophy }: HeroProps) {
     }
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(quickCmd);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <div className="relative flex flex-col items-center text-center pt-8 pb-4 px-4 max-w-4xl mx-auto">
-      {/* Calm subtle pill */}
-      <div className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 bg-zinc-100/90 dark:bg-zinc-900/80 px-4 py-1.5 mb-6 text-xs text-zinc-700 dark:text-zinc-300 font-mono backdrop-blur-md transition-colors">
-        <Cpu className="h-3.5 w-3.5 text-zinc-900 dark:text-white" />
-        <span className="font-semibold text-zinc-900 dark:text-white">APOC / AGENT POCKET</span>
-        <span className="text-zinc-400 dark:text-zinc-600">•</span>
-        <span>PHYSICAL HARDWARE + AGENT OS INFRASTRUCTURE</span>
+      {/* Calm minimal badge */}
+      <div className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 bg-zinc-100/90 dark:bg-zinc-900/80 px-3.5 py-1 mb-6 text-xs text-zinc-700 dark:text-zinc-300 font-mono backdrop-blur-md transition-colors">
+        <span className="h-1.5 w-1.5 rounded-full bg-zinc-900 dark:bg-white" />
+        <span className="font-medium text-zinc-900 dark:text-white">Agent Pocket</span>
       </div>
 
       {/* Main Headline */}
@@ -50,7 +40,7 @@ export function Hero({ onOpenWaitlist, onOpenPhilosophy }: HeroProps) {
         We do not build software in isolation. APOC couples <strong className="text-zinc-900 dark:text-white font-medium">dedicated physical hardware</strong> with a <strong className="text-zinc-900 dark:text-white font-medium">loaded Agent OS layer</strong>. This makes the hardware directly adaptable by the AI, giving your agent full awareness of its compute, capabilities, memory, and physical boundaries.
       </p>
 
-      {/* Clean Waitlist & CLI box */}
+      {/* Clean Waitlist Input */}
       <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md">
         <form onSubmit={handleEmailSubmit} className="relative flex w-full">
           <input
@@ -68,22 +58,6 @@ export function Hero({ onOpenWaitlist, onOpenPhilosophy }: HeroProps) {
             <ArrowRight className="h-3 w-3" />
           </button>
         </form>
-      </div>
-
-      {/* Subtle install command */}
-      <div className="mt-4 flex items-center gap-2 text-xs text-zinc-500 font-mono">
-        <span>or install CLI runtime:</span>
-        <button
-          onClick={handleCopy}
-          className="flex items-center gap-1.5 rounded-md border border-black/10 dark:border-white/10 bg-zinc-100 dark:bg-zinc-950 px-2.5 py-1 text-zinc-700 dark:text-zinc-300 hover:text-black dark:hover:text-white hover:border-black/25 dark:hover:border-white/25 transition-all"
-        >
-          <span>{quickCmd}</span>
-          {copied ? (
-            <Check className="h-3 w-3 text-black dark:text-white" />
-          ) : (
-            <Copy className="h-3 w-3 text-zinc-400 dark:text-zinc-500" />
-          )}
-        </button>
       </div>
     </div>
   );

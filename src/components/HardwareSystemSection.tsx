@@ -59,7 +59,7 @@ export function HardwareSystemSection() {
       <div className="text-center space-y-2 max-w-2xl mx-auto">
         <div className="inline-flex items-center gap-2 rounded-full border border-black/10 dark:border-white/10 bg-zinc-100 dark:bg-zinc-900/60 px-3 py-1 text-xs text-zinc-700 dark:text-zinc-400 font-mono transition-colors">
           <Cpu className="h-3.5 w-3.5 text-zinc-900 dark:text-white" />
-          <span>AI INFRASTRUCTURE: HARDWARE + AGENT OS</span>
+          <span>SYSTEM SPECIFICATION</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-zinc-950 dark:text-white font-sans">
           Hardware as the Control Layer. <br />
