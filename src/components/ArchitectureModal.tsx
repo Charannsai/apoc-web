@@ -33,7 +33,7 @@ export function ArchitectureModal({ isOpen, onClose }: ArchitectureModalProps) {
       subtitle: "Reusable cognitive specialists with shared memory graphs",
       icon: Layers,
       details:
-        "Agents are persistent entities with identities, boundaries, memory, and relationships—not disposable prompt blobs.",
+        "Agents are persistent entities with identities, boundaries, memory, and relationships, not disposable prompt blobs.",
       responsibilities: [
         "Agent-to-agent collaboration",
         "Specialist discovery & delegation",

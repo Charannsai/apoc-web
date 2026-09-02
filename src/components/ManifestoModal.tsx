@@ -97,8 +97,8 @@ export function ManifestoModal({ isOpen, onClose }: ManifestoModalProps) {
               4. Evidence-Driven Outcome Verification
             </h3>
             <p className="text-zinc-400 text-xs sm:text-sm">
-              Never declare success solely because an LLM claims success. APOC verifies external state changes—confirming
-              files exist, ports respond, processes stay healthy, and test suites pass—before marking a task completed.
+              Never declare success solely because an LLM claims success. APOC verifies external state changes, confirming
+              files exist, ports respond, processes stay healthy, and test suites pass, before marking a task completed.
             </p>
           </div>
         </div>
