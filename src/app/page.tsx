@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero, HeroHandle } from "@/components/Hero";
 import { PhilosophyModal } from "@/components/PhilosophyModal";
 import { SystemSpecModal } from "@/components/SystemSpecModal";
-import { TelemetryBar } from "@/components/TelemetryBar";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   const [isPhilosophyOpen, setIsPhilosophyOpen] = useState(false);
@@ -22,7 +22,7 @@ export default function Home() {
       <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-30" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_800px_at_50%_-100px,rgba(0,0,0,0.03),transparent)] dark:bg-[radial-gradient(circle_800px_at_50%_-100px,rgba(255,255,255,0.06),transparent)]" />
 
-      {/* Header Navigation */}
+      {/* Header Navigation with soft bottom fade and zero lines */}
       <Navbar
         onOpenPhilosophy={() => setIsPhilosophyOpen(true)}
         onFocusWaitlist={handleFocusWaitlist}
@@ -36,12 +36,9 @@ export default function Home() {
         />
       </main>
 
-      {/* Calm Footer */}
+      {/* Clean Legal Footer with soft top fade and zero lines */}
       <div className="relative z-10">
-        <TelemetryBar
-          onOpenPhilosophy={() => setIsPhilosophyOpen(true)}
-          onFocusWaitlist={handleFocusWaitlist}
-        />
+        <Footer />
       </div>
 
       {/* Modals */}
