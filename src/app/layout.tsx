@@ -61,7 +61,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-white dark:bg-[#050506] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans transition-colors duration-200">
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-white dark:bg-[#050506] text-zinc-900 dark:text-zinc-100 flex flex-col font-sans transition-colors duration-200"
+      >
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
