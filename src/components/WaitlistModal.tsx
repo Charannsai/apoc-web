@@ -62,13 +62,13 @@ export function WaitlistModal({
           <div className="space-y-6">
             <div>
               <span className="text-xs uppercase tracking-widest text-zinc-500 font-mono">
-                EARLY ACCESS
+                PRE-ORDER WAITLIST
               </span>
               <h2 className="text-2xl font-normal tracking-tight text-zinc-950 dark:text-white font-sans mt-1">
-                Experience Agent Pocket
+                Join the Apoc Waitlist
               </h2>
               <p className="mt-2 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans">
-                We are gradually rolling out hardware pilots to select builders and teams who value calm, private delegation.
+                Reserve your priority spot for the physical hardware and loaded Agent OS release.
               </p>
             </div>
 
@@ -91,7 +91,7 @@ export function WaitlistModal({
                 type="submit"
                 className="w-full rounded-full bg-black text-white dark:bg-white dark:text-black py-2.5 text-xs font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all active:scale-95 flex items-center justify-center gap-2 font-sans"
               >
-                <span>Request Early Pass</span>
+                <span>Join Pre-Order Waitlist</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </form>
@@ -104,11 +104,11 @@ export function WaitlistModal({
 
             <div className="space-y-2">
               <h3 className="text-xl font-medium text-zinc-950 dark:text-white font-sans">
-                You are on the list
+                You are on the waitlist
               </h3>
               <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans">
-                We have reserved spot <strong className="text-zinc-950 dark:text-white font-mono">{passCode}</strong> for{" "}
-                <span className="text-zinc-900 dark:text-zinc-200">{email}</span>. We will be in touch with your private hardware and CLI access details.
+                We have reserved priority spot <strong className="text-zinc-950 dark:text-white font-mono">{passCode}</strong> for{" "}
+                <span className="text-zinc-900 dark:text-zinc-200">{email}</span>. You will be notified when pre-orders open.
               </p>
             </div>
 

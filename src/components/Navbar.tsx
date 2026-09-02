@@ -19,12 +19,9 @@ export function Navbar({ onOpenPhilosophy, onOpenWaitlist }: NavbarProps) {
               <div className="flex h-7 w-7 items-center justify-center rounded-md border border-black/20 dark:border-white/20 bg-zinc-100 dark:bg-zinc-900 transition-all duration-300 group-hover:border-black dark:group-hover:border-white">
                 <div className="h-2 w-2 rounded-sm bg-black dark:bg-white" />
               </div>
-              <div className="flex items-baseline gap-1.5">
-                <span className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-white">
-                  Apoc
-                </span>
-                <span className="text-xs text-zinc-500 font-normal">/ Agent Pocket</span>
-              </div>
+              <span className="text-sm font-semibold tracking-tight text-zinc-900 dark:text-white">
+                Apoc
+              </span>
             </a>
           </div>
 
@@ -37,14 +34,15 @@ export function Navbar({ onOpenPhilosophy, onOpenWaitlist }: NavbarProps) {
               Philosophy
             </button>
 
-            {/* Theme Toggle Button */}
+            {/* Theme Toggle */}
             <ThemeToggle />
 
+            {/* Pre-order Waitlist CTA */}
             <button
               onClick={onOpenWaitlist}
               className="rounded-full border border-black dark:border-white bg-black dark:bg-white px-4 py-1.5 font-medium text-white dark:text-black transition-all hover:bg-zinc-800 dark:hover:bg-zinc-200 active:scale-95"
             >
-              Get Pocket
+              Pre-Order Waitlist
             </button>
           </div>
         </div>
