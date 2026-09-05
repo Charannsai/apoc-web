@@ -45,23 +45,23 @@ export const Hero = forwardRef<HeroHandle, HeroProps>(function Hero(
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center text-center max-w-3xl mx-auto w-full px-4 py-8 sm:py-12">
+    <div className="relative flex flex-col items-start text-left max-w-xl w-full">
       {/* Main Headline */}
-      <h1 className="text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-zinc-950 leading-[1.1] font-sans">
+      <h1 className="text-3xl sm:text-4xl md:text-[46px] font-semibold tracking-tight text-zinc-950 leading-[1.14] font-sans">
         Physical AI hardware. <br />
-        <span className="text-zinc-500 font-light italic">
+        <span className="text-zinc-600 font-normal">
           Loaded with Agent OS.
         </span>
       </h1>
 
       {/* Short & Concise Narrative */}
-      <p className="mt-5 max-w-xl text-base sm:text-lg text-zinc-600 font-normal leading-relaxed font-sans">
+      <p className="mt-5 text-sm sm:text-base md:text-[17px] text-zinc-700 font-normal leading-relaxed font-sans max-w-lg">
         Dedicated local compute coupled with an autonomous agent runtime. Private, sovereign, and built for real execution.
       </p>
 
       {/* In-Place Pre-Order Waitlist Form (Fixed Dimensions) */}
-      <div className="mt-8 sm:mt-10 flex items-center justify-center w-full">
-        <div className="relative w-full max-w-md h-[48px] rounded-full border border-black/15 bg-zinc-50/90 shadow-sm overflow-hidden transition-colors">
+      <div className="mt-7 flex items-center w-full max-w-md">
+        <div className="relative w-full h-[48px] rounded-full border border-black/15 bg-white/95 shadow-sm hover:border-black/30 transition-colors overflow-hidden">
           <AnimatePresence mode="wait" initial={false}>
             {!isSubmitted ? (
               <motion.form
@@ -80,13 +80,13 @@ export const Hero = forwardRef<HeroHandle, HeroProps>(function Hero(
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
                   placeholder="Enter your email..."
-                  className="w-full h-full bg-transparent pl-5 pr-44 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
+                  className="w-full h-full bg-transparent pl-5 pr-36 sm:pr-40 text-xs sm:text-sm text-zinc-900 placeholder-zinc-400 focus:outline-none"
                 />
                 <button
                   type="submit"
                   className="absolute right-1 top-1 bottom-1 rounded-full bg-black px-4 text-xs font-medium text-white transition-all hover:bg-zinc-800 active:scale-95 flex items-center gap-1 font-sans cursor-pointer whitespace-nowrap shadow-sm"
                 >
-                  <span>Join Pre-Order Waitlist</span>
+                  <span>Join Waitlist</span>
                   <ArrowRight className="h-3 w-3" />
                 </button>
               </motion.form>
@@ -111,10 +111,10 @@ export const Hero = forwardRef<HeroHandle, HeroProps>(function Hero(
       </div>
 
       {/* Know More about APOC in Detail (Directly below the waitlist input) */}
-      <div className="mt-6 flex items-center justify-center">
+      <div className="mt-4 flex items-center">
         <button
           onClick={onOpenSpecModal}
-          className="group text-xs sm:text-sm font-sans font-medium text-zinc-600 hover:text-black transition-colors flex items-center gap-1.5 cursor-pointer underline underline-offset-4 decoration-zinc-300 hover:decoration-black"
+          className="group text-xs sm:text-sm font-sans font-medium text-zinc-800 hover:text-black transition-colors flex items-center gap-1.5 cursor-pointer underline underline-offset-4 decoration-zinc-500 hover:decoration-black"
         >
           <span>Know More about APOC in Detail</span>
           <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

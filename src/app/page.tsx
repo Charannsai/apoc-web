@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Hero, HeroHandle } from "@/components/Hero";
 import { PhilosophyModal } from "@/components/PhilosophyModal";
@@ -19,28 +20,38 @@ export default function Home() {
   return (
     <div
       suppressHydrationWarning
-      className="relative min-h-screen flex flex-col justify-between bg-white text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white font-sans"
+      className="relative min-h-screen lg:h-screen lg:overflow-hidden flex flex-col justify-between text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white font-sans"
     >
-      {/* Background Soft Lighting & Minimal Grid */}
-      <div className="pointer-events-none fixed inset-0 z-0 bg-grid-pattern opacity-40" />
+      {/* Scenic Background Image (Full Viewport) */}
+      <div className="fixed inset-0 z-0">
+        <Image
+          src="/bg.png"
+          alt="APOC Landscape Background"
+          fill
+          priority
+          quality={100}
+          className="object-cover object-center pointer-events-none select-none"
+        />
+      </div>
 
-      {/* Header Navigation with soft bottom fade and zero lines */}
+      {/* Header Navigation (Translucent Glassy) */}
       <Navbar
+        transparent
         onOpenPhilosophy={() => setIsPhilosophyOpen(true)}
         onFocusWaitlist={handleFocusWaitlist}
       />
 
-      {/* Main Single-Section Canvas (Centered in Middle) */}
-      <main className="relative z-10 flex-1 flex flex-col items-center justify-center max-w-4xl w-full mx-auto px-4 sm:px-6 my-auto">
+      {/* Main Canvas Docked to Left Corner / Side with Balanced Breathing Room */}
+      <main className="relative z-10 flex-1 flex flex-col justify-center items-start w-full px-6 sm:px-12 lg:px-16 xl:px-24 py-8">
         <Hero
           ref={heroRef}
           onOpenSpecModal={() => setIsSpecModalOpen(true)}
         />
       </main>
 
-      {/* Clean Legal Footer with soft top fade and zero lines */}
+      {/* Translucent Bottom Footer */}
       <div className="relative z-10">
-        <Footer />
+        <Footer transparent />
       </div>
 
       {/* Modals */}

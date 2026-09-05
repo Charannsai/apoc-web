@@ -7,13 +7,20 @@ import Image from "next/image";
 interface NavbarProps {
   onOpenPhilosophy?: () => void;
   onFocusWaitlist?: () => void;
+  transparent?: boolean;
 }
 
-export function Navbar({ onOpenPhilosophy, onFocusWaitlist }: NavbarProps) {
+export function Navbar({ onOpenPhilosophy, onFocusWaitlist, transparent = false }: NavbarProps) {
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md transition-colors">
-      <div className="mx-auto max-w-6xl px-6 sm:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <header
+      className={`sticky top-0 z-40 w-full transition-all ${
+        transparent
+          ? "bg-transparent"
+          : "bg-white/90 backdrop-blur-md"
+      }`}
+    >
+      <div className={`w-full ${transparent ? "px-6 sm:px-12 lg:px-16 xl:px-24" : "mx-auto max-w-7xl px-6 sm:px-8"}`}>
+        <div className="flex h-16 sm:h-20 items-center justify-between">
           {/* Brand Logo */}
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center group">
@@ -33,7 +40,7 @@ export function Navbar({ onOpenPhilosophy, onFocusWaitlist }: NavbarProps) {
             {onOpenPhilosophy && (
               <button
                 onClick={onOpenPhilosophy}
-                className="text-zinc-600 hover:text-black transition-colors cursor-pointer"
+                className="text-zinc-700 hover:text-black font-medium transition-colors cursor-pointer"
               >
                 Philosophy
               </button>
@@ -51,8 +58,9 @@ export function Navbar({ onOpenPhilosophy, onFocusWaitlist }: NavbarProps) {
           </div>
         </div>
       </div>
-      {/* Soft gradient fade without any line */}
-      <div className="h-4 w-full bg-gradient-to-b from-white/90 to-transparent pointer-events-none -mb-4" />
+      {!transparent && (
+        <div className="h-4 w-full bg-gradient-to-b from-white/90 to-transparent pointer-events-none -mb-4" />
+      )}
     </header>
   );
 }
