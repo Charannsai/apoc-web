@@ -11,8 +11,8 @@ interface FooterProps {
 export function Footer({ transparent = false }: FooterProps) {
   if (transparent) {
     return (
-      <footer className="w-full py-5 px-6 sm:px-10 text-xs font-sans relative z-20">
-        <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3 text-zinc-800">
+      <footer className="w-full py-6 px-6 sm:px-12 lg:px-16 xl:px-24 text-xs font-sans relative z-20">
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-3 text-zinc-800">
           {/* Left: Brand Logo & Copyright */}
           <div className="flex items-center gap-3">
             <Link href="/" className="inline-flex items-center" aria-label="Apoc Home">
