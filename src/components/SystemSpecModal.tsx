@@ -53,8 +53,14 @@ export function SystemSpecModal({ isOpen, onClose }: SystemSpecModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200 font-sans">
-      <div className="relative w-full max-w-4xl rounded-2xl border border-black/10 bg-white p-6 sm:p-8 shadow-2xl text-zinc-700 max-h-[90vh] overflow-y-auto">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200 font-sans"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-4xl rounded-2xl border border-black/10 bg-white p-6 sm:p-8 shadow-2xl text-zinc-700 max-h-[90vh] overflow-y-auto no-scrollbar"
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
@@ -78,7 +84,7 @@ export function SystemSpecModal({ isOpen, onClose }: SystemSpecModalProps) {
 
         {/* Table */}
         <div className="rounded-xl border border-black/10 bg-zinc-50 overflow-hidden text-xs font-sans">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto no-scrollbar">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-black/10 bg-zinc-100 text-zinc-600 font-mono">
@@ -116,16 +122,6 @@ export function SystemSpecModal({ isOpen, onClose }: SystemSpecModalProps) {
               </tbody>
             </table>
           </div>
-        </div>
-
-        {/* Footer */}
-        <div className="mt-6 pt-4 border-t border-black/10 flex justify-end">
-          <button
-            onClick={onClose}
-            className="rounded-full bg-black text-white px-5 py-2 text-xs font-medium hover:bg-zinc-800 transition-colors font-sans cursor-pointer"
-          >
-            Close Specification
-          </button>
         </div>
       </div>
     </div>
