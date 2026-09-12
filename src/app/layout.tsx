@@ -15,55 +15,61 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apoc.run"),
+  metadataBase: new URL("https://apoc.in"),
   title: {
-    default: "APOC - Physical AI Hardware & Agent OS",
+    default: "APOC C1 - AI-Native Development Environment & Physical Agent OS",
     template: "%s | APOC",
   },
   description:
-    "APOC (Agent Pocket) is a physical, local-first AI platform combining dedicated on-device compute with a loaded Agent OS runtime. Sovereign, private, and built for real execution.",
+    "Apoc C1 is an AI-native development environment designed for the agentic era. Bringing developers, AI agents, development tools, and sovereign physical compute into a unified workspace.",
+  applicationName: "APOC",
   keywords: [
     "APOC",
-    "Agent Pocket",
-    "APOC AI",
-    "Physical AI Hardware",
+    "APOC C1",
+    "apoc.in",
+    "AI-native development environment",
     "Agent OS",
+    "Physical AI Hardware",
     "Local AI Platform",
     "Autonomous Agents",
-    "MCP Runtime",
+    "Human-Agent Collaboration",
     "Model Context Protocol",
+    "MCP Runtime",
     "Sovereign AI Device",
+    "Local Compute for Agents",
+    "Developer Environment",
   ],
-  authors: [{ name: "APOC Systems", url: "https://apoc.run" }],
+  authors: [{ name: "APOC Systems", url: "https://apoc.in" }],
   creator: "APOC Systems",
   publisher: "APOC Systems",
   alternates: {
-    canonical: "https://apoc.run",
+    canonical: "https://apoc.in",
   },
   openGraph: {
-    title: "APOC - Physical AI Hardware & Agent OS",
+    title: "APOC C1 - AI-Native Development Environment & Physical Agent OS",
     description:
-      "Dedicated local compute coupled with an autonomous agent runtime. Private, sovereign, and built for real execution.",
-    url: "https://apoc.run",
+      "Apoc C1 brings developers, AI agents, development tools, and project environments into a unified workspace. Dedicated local compute with autonomous Agent OS.",
+    url: "https://apoc.in",
     siteName: "APOC - Agent Pocket",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/apoclogo.png",
+        url: "https://apoc.in/apoclogo.png",
         width: 1200,
         height: 630,
-        alt: "APOC - Physical AI Hardware & Agent OS",
+        alt: "APOC C1 - Physical AI Hardware & Agent OS",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "APOC - Physical AI Hardware & Agent OS",
+    title: "APOC C1 - AI-Native Development Environment & Physical Agent OS",
     description:
-      "Dedicated local compute coupled with an autonomous agent runtime. Private, sovereign, and built for real execution.",
-    images: ["/apoclogo.png"],
-    creator: "@apoc_run",
+      "Apoc C1 brings developers, AI agents, development tools, and project environments into a unified workspace.",
+    images: ["https://apoc.in/apoclogo.png"],
+    creator: "@apoc_in",
+    site: "@apoc_in",
   },
   robots: {
     index: true,
@@ -77,9 +83,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/apoclogo.png",
+    shortcut: "/apoclogo.png",
     apple: "/apoclogo.png",
   },
+  category: "technology",
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -87,37 +96,69 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Google Sitelinks & Rich Snippets Structured Data (Schema.org)
+  // Comprehensive Schema.org Graph for SEO, AEO (Answer Engine Optimization) & GEO (Generative Engine Optimization)
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://apoc.run/#organization",
+        "@id": "https://apoc.in/#organization",
         "name": "APOC Systems",
-        "url": "https://apoc.run",
+        "url": "https://apoc.in",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://apoc.run/apoclogo.png",
+          "url": "https://apoc.in/apoclogo.png",
         },
-        "sameAs": ["https://x.com/apoc_run"],
+        "description":
+          "Creator of APOC C1, an AI-native development environment and physical compute platform for autonomous agent execution.",
+        "email": "team@apoc.in",
+        "sameAs": ["https://x.com/apoc_in"],
       },
       {
         "@type": "WebSite",
-        "@id": "https://apoc.run/#website",
-        "url": "https://apoc.run",
+        "@id": "https://apoc.in/#website",
+        "url": "https://apoc.in",
         "name": "APOC - Agent Pocket",
+        "description":
+          "Apoc C1 is an AI-native development environment designed for the agentic era.",
         "publisher": {
-          "@id": "https://apoc.run/#organization",
+          "@id": "https://apoc.in/#organization",
         },
+        "inLanguage": "en-US",
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://apoc.in/#software",
+        "name": "APOC C1",
+        "applicationCategory": "DeveloperApplication, ArtificialIntelligence",
+        "operatingSystem": "Agent OS",
+        "url": "https://apoc.in",
+        "description":
+          "Apoc C1 is an AI-native development environment designed for the agentic era. It brings developers, AI agents, development tools, and project environments into a unified workspace. Developers can use C1 to work with AI agents that understand their project, access relevant tools, execute development tasks, and collaborate throughout the software development process.",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/PreOrder",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://apoc.in",
+        },
+        "featureList": [
+          "Human and agent collaboration workspace",
+          "Unified environment eliminating tool switching",
+          "Loaded Agent OS runtime",
+          "Model Context Protocol (MCP) tool integration",
+          "Hardware-enforced sandboxing and isolation",
+          "Capability != Authority permission architecture",
+          "Evidence-driven outcome verification",
+        ],
       },
       {
         "@type": "Product",
-        "@id": "https://apoc.run/#product",
-        "name": "APOC - Agent Pocket",
-        "image": "https://apoc.run/apoclogo.png",
+        "@id": "https://apoc.in/#product",
+        "name": "APOC C1",
+        "image": "https://apoc.in/apoclogo.png",
         "description":
-          "A physical local-first AI platform and agentic workflow environment combining hardware control with loaded Agent OS.",
+          "A physical local-first AI platform and agentic workflow environment combining dedicated neural compute with loaded Agent OS.",
         "brand": {
           "@type": "Brand",
           "name": "APOC",
@@ -127,8 +168,54 @@ export default function RootLayout({
           "availability": "https://schema.org/PreOrder",
           "price": "0",
           "priceCurrency": "USD",
-          "url": "https://apoc.run",
+          "url": "https://apoc.in",
         },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://apoc.in/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is APOC C1?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Apoc C1 is an AI-native development environment designed for the agentic era. It brings developers, AI agents, development tools, and project environments into a unified workspace. Instead of switching between an IDE, AI assistants, terminals, and documentation, C1 integrates these interactions into one environment centered on a human and agent collaboration model.",
+            },
+          },
+          {
+            "@type": "Question",
+            "name": "What is the official domain for APOC?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The official website and pre-order waitlist for APOC is https://apoc.in.",
+            },
+          },
+          {
+            "@type": "Question",
+            "name": "What is Agent OS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Agent OS is a dedicated software runtime pre-loaded onto APOC hardware that bridges model reasoning with physical environment control, sandboxed filesystem execution, tool schema invocation, and real-time observability.",
+            },
+          },
+          {
+            "@type": "Question",
+            "name": "How does APOC ensure security and privacy?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "APOC operates on a local-first computing model where your source code, environment credentials, and agent interactions remain within your physical workspace perimeter. It enforces the 'Capability != Authority' principle: discovering a tool does not grant permission to run it, and destructive operations require human cryptographic sign-off.",
+            },
+          },
+          {
+            "@type": "Question",
+            "name": "How do I join the pre-order waitlist for APOC C1?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can sign up directly on https://apoc.in by entering your email in the pre-order waitlist input to receive priority access and hardware batch updates.",
+            },
+          },
+        ],
       },
       {
         "@type": "ItemList",
@@ -138,35 +225,28 @@ export default function RootLayout({
             "position": 1,
             "name": "About APOC",
             "description": "The mission and physical hardware architecture behind Apoc.",
-            "url": "https://apoc.run/about",
+            "url": "https://apoc.in/about",
           },
           {
             "@type": "SiteNavigationElement",
             "position": 2,
-            "name": "Contact",
-            "description": "Pre-order inquiries, developer pilots, and enterprise partnerships.",
-            "url": "https://apoc.run/contact",
+            "name": "Security",
+            "description": "Capability != Authority model and hardware sandboxing.",
+            "url": "https://apoc.in/security",
           },
           {
             "@type": "SiteNavigationElement",
             "position": 3,
-            "name": "Security",
-            "description": "Capability != Authority model and hardware sandboxing.",
-            "url": "https://apoc.run/security",
+            "name": "Privacy Policy",
+            "description": "Local-first sovereignty and zero cloud data ingestion.",
+            "url": "https://apoc.in/privacy",
           },
           {
             "@type": "SiteNavigationElement",
             "position": 4,
-            "name": "Privacy Policy",
-            "description": "Local-first sovereignty and zero cloud data ingestion.",
-            "url": "https://apoc.run/privacy",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 5,
             "name": "Terms of Service",
             "description": "Hardware ownership and Agent OS licensing terms.",
-            "url": "https://apoc.run/terms",
+            "url": "https://apoc.in/terms",
           },
         ],
       },

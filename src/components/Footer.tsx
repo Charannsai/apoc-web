@@ -38,12 +38,6 @@ export function Footer({ transparent = false }: FooterProps) {
               About
             </Link>
             <Link
-              href="/contact"
-              className="text-zinc-700 hover:text-black font-medium transition-colors"
-            >
-              Contact
-            </Link>
-            <Link
               href="/security"
               className="text-zinc-700 hover:text-black font-medium transition-colors"
             >
@@ -96,12 +90,6 @@ export function Footer({ transparent = false }: FooterProps) {
             className="text-zinc-600 hover:text-black transition-colors"
           >
             About
-          </Link>
-          <Link
-            href="/contact"
-            className="text-zinc-600 hover:text-black transition-colors"
-          >
-            Contact
           </Link>
           <Link
             href="/security"

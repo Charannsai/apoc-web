@@ -1,0 +1,26 @@
+# APOC: Physical AI Hardware & Agent OS
+> Official website: https://apoc.in
+
+## Overview
+APOC (Agent Pocket) is a physical, local-first AI platform and development environment combining dedicated on-device compute with a loaded Agent OS runtime. Sovereign, private, and built for real execution.
+
+Apoc C1 is an AI-native development environment designed for the agentic era. It brings developers, AI agents, development tools, and project environments into a unified workspace.
+
+Developers can use C1 to work with AI agents that understand their project, access relevant tools, execute development tasks, and collaborate with them throughout the software development process. Instead of switching between an IDE, AI assistants, terminals, documentation, and other tools, C1 brings these interactions into one environment.
+
+The product is designed around a human and agent collaboration model, where developers remain in control while AI agents handle tasks, explore solutions, modify code, and execute workflows. This enables developers to move from manually writing every part of an application toward directing and supervising intelligent agents that can contribute across the development lifecycle.
+
+## Core Pillars
+
+1. **Sovereign Physical Compute**: Dedicated local neural acceleration ensures sensitive code, proprietary datasets, and agent actions remain strictly inside your physical workspace perimeter. Zero cloud surveillance or unsolicited telemetry.
+2. **Pre-loaded Agent OS**: A purpose-built operating system layer that bridges model reasoning with system-level process execution, sandboxed filesystem access, and tool invocation.
+3. **Security Model: Capability != Authority**: In conventional agent frameworks, tool discovery equates to execution authority. In Apoc, actions with real-world side effects require cryptographic verification or interactive human sign-off.
+4. **Evidence-Driven Verification**: No task is marked complete based on conversational claims. Apoc validates observable runtime proofs (exit codes, open ports, sha256 checksums, and unit tests).
+
+## Navigation & Resources
+- [Home & Pre-Order Waitlist](https://apoc.in)
+- [About APOC & Hardware Architecture](https://apoc.in/about)
+- [Security & Trust Model](https://apoc.in/security)
+- [Privacy Policy](https://apoc.in/privacy)
+- [Terms of Service](https://apoc.in/terms)
+- [Full LLM Documentation](https://apoc.in/llms-full.txt)

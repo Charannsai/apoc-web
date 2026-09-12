@@ -68,7 +68,7 @@ export default function ContactPage() {
               Direct Email
             </div>
             <div className="text-sm font-medium text-zinc-950">
-              team@apoc.run
+              team@apoc.in
             </div>
             <div className="text-xs text-zinc-500">
               Typical response in 24 hours

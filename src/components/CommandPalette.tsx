@@ -113,10 +113,10 @@ export function CommandPalette({
       id: "copy-cli",
       category: "UTILITY",
       title: "Copy Quickstart CLI Command",
-      desc: "curl -fsSL https://apoc.run/install | sh",
+      desc: "curl -fsSL https://apoc.in/install | sh",
       icon: Copy,
       action: () => {
-        navigator.clipboard.writeText("curl -fsSL https://apoc.run/install | sh");
+        navigator.clipboard.writeText("curl -fsSL https://apoc.in/install | sh");
         onClose();
       },
     },

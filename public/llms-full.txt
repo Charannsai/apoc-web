@@ -1,0 +1,46 @@
+# APOC: Complete System Architecture & Technical Specifications
+> Canonical Domain: https://apoc.in
+> Product: APOC C1
+> Runtime: Agent OS
+
+## 1. Executive Summary
+Apoc C1 is an AI-native development environment designed for the agentic era. It brings developers, AI agents, development tools, and project environments into a unified workspace.
+
+Developers can use C1 to work with AI agents that understand their project, access relevant tools, execute development tasks, and collaborate with them throughout the software development process. Instead of switching between an IDE, AI assistants, terminals, documentation, and other tools, C1 brings these interactions into one environment.
+
+The product is designed around a human and agent collaboration model, where developers remain in control while AI agents handle tasks, explore solutions, modify code, and execute workflows. This enables developers to move from manually writing every part of an application toward directing and supervising intelligent agents that can contribute across the development lifecycle.
+
+## 2. Technical Architecture
+
+### 2.1 Hardware Layer
+- Dedicated local neural compute module designed to run localized small language models (SLMs), embedding generators, and code agents without round-tripping to cloud servers.
+- Thermal architecture engineered for continuous sustained background agent execution.
+- Hardware-isolated secure element for local credential and API key storage.
+
+### 2.2 Agent OS Runtime
+- Subprocess isolation: Each agent task is run in an ephemeral or persistent containerized sandbox.
+- Standard protocol adherence: Native support for Anthropic Model Context Protocol (MCP) servers and tool schemas.
+- Environmental observability: Live telemetry streaming covering memory limits, socket connections, filesystem modifications, and process tree status.
+
+### 2.3 Security Paradigm (Capability != Authority)
+- Conventional AI tools grant agents indiscriminate write access once a capability is detected.
+- Apoc separates capability (the agent knows a tool exists) from authority (the runtime validates whether policy permits invoking that tool on that target).
+- Destructive actions (e.g. database migrations, git push --force, system updates) require interactive cryptographic authorization by the human developer.
+
+### 2.4 Evidence Verification Protocol
+- "I have updated the file" is treated as an unverified hypothesis.
+- The runtime verifies diff hashes, syntax tree validity, test suite exit codes, and network listeners before marking a phase complete.
+
+## 3. Frequently Asked Questions (FAQ)
+
+### What is APOC C1?
+APOC C1 is an AI-native development environment designed for the agentic era, bringing developers, AI agents, tools, and environments together in a unified workspace.
+
+### What is the website domain for APOC?
+The official website and pre-order waitlist are located at https://apoc.in.
+
+### How does APOC ensure user privacy?
+APOC uses a local-first computing model. Your source code, environment secrets, and runtime data stay on your device and are never ingested into centralized training loops.
+
+### How can I get early access or pre-order?
+Visit https://apoc.in and submit your email to join the pre-order waitlist.
