@@ -22,15 +22,15 @@ export default function Home() {
       suppressHydrationWarning
       className="relative min-h-screen lg:h-screen lg:overflow-hidden flex flex-col justify-between text-zinc-900 overflow-x-hidden selection:bg-black selection:text-white font-sans"
     >
-      {/* Scenic Background Image (Full Viewport) */}
-      <div className="fixed inset-0 z-0">
+      {/* Scenic Background Image (Muted Low Opacity Watermark) */}
+      <div className="fixed inset-0 z-0 bg-[#fbf9f5]">
         <Image
-          src="/bg.png"
+          src="/bg.webp"
           alt="APOC Landscape Background"
           fill
           priority
-          quality={100}
-          className="object-cover object-center pointer-events-none select-none"
+          unoptimized
+          className="object-cover object-center pointer-events-none select-none opacity-25"
         />
       </div>
 
@@ -38,6 +38,7 @@ export default function Home() {
       <Navbar
         transparent
         onOpenPhilosophy={() => setIsPhilosophyOpen(true)}
+        onOpenSpecModal={() => setIsSpecModalOpen(true)}
         onFocusWaitlist={handleFocusWaitlist}
       />
 

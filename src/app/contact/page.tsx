@@ -11,7 +11,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "Pre-Order Inquiry",
+    subject: "Industry Partnership & Proof-of-Concept (POC)",
     message: "",
   });
 
@@ -36,7 +36,7 @@ export default function ContactPage() {
           <Link href="/" className="inline-flex items-center">
             <Image
               src="/apoclogo.png"
-              alt="APOC"
+              alt="APOC Labs"
               width={95}
               height={26}
               className="h-6 w-auto object-contain"
@@ -53,10 +53,10 @@ export default function ContactPage() {
             GET IN TOUCH
           </span>
           <h1 className="text-3xl sm:text-5xl font-normal tracking-tight text-zinc-950">
-            Contact Apoc Systems
+            Contact APOC Labs
           </h1>
           <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed">
-            Have questions about upcoming hardware batches, enterprise pilots, or capability integrations?
+            Collaborate on industry use cases, proof-of-concept solutions, enterprise deployments, or APOC C1 agent computers.
             Reach out directly to our engineering and founder team.
           </p>
         </div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
               Mon - Fri, 9am - 6pm PST
             </div>
             <div className="text-xs text-zinc-500">
-              Global developer support
+              Global enterprise support
             </div>
           </div>
 
@@ -97,7 +97,7 @@ export default function ContactPage() {
               San Francisco, CA
             </div>
             <div className="text-xs text-zinc-500">
-              Hardware Lab & Foundry
+              APOC Labs & Systems Foundry
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function ContactPage() {
           {!submitted ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               <h2 className="text-lg font-medium text-zinc-950">
-                Send a Direct Message
+                Initiate a Partnership or Inquiry
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -148,10 +148,11 @@ export default function ContactPage() {
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   className="w-full rounded-xl border border-black/15 bg-white px-4 py-2.5 text-sm text-zinc-900 focus:border-black focus:outline-none cursor-pointer"
                 >
-                  <option value="Pre-Order Inquiry">Pre-Order Hardware Inquiry</option>
+                  <option value="Industry Partnership & Proof-of-Concept (POC)">Industry Partnership & Proof-of-Concept (POC)</option>
+                  <option value="APOC C1 Hardware Inquiries">APOC C1 Hardware Early Access</option>
                   <option value="Enterprise Pilot">Enterprise Fleet Deployment</option>
-                  <option value="Capability Integration">MCP Tool / Adapter Integration</option>
-                  <option value="General Question">General Question</option>
+                  <option value="Next-Gen AI Research Collaboration">Next-Gen AI Research Collaboration</option>
+                  <option value="General Inquiry">General Inquiry</option>
                 </select>
               </div>
 
@@ -164,7 +165,7 @@ export default function ContactPage() {
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Tell us about your team's workflow and interest in Apoc..."
+                  placeholder="Tell us about your organization's industry requirements, workflow challenges, or interest in APOC..."
                   className="w-full rounded-xl border border-black/15 bg-white px-4 py-2.5 text-sm text-zinc-900 placeholder-zinc-400 focus:border-black focus:outline-none"
                 />
               </div>
@@ -186,7 +187,7 @@ export default function ContactPage() {
                 Message Received
               </h3>
               <p className="text-xs sm:text-sm text-zinc-600 max-w-sm mx-auto">
-                Thank you for reaching out, {formData.name || "friend"}. A member of the Apoc team will respond to{" "}
+                Thank you for reaching out, {formData.name || "partner"}. A member of the APOC Labs team will respond to{" "}
                 <strong className="text-zinc-900">{formData.email}</strong> within 24 hours.
               </p>
               <div className="pt-2">
