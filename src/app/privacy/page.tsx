@@ -1,106 +1,49 @@
-"use client";
-
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
-import { Footer } from "@/components/Footer";
+import type { Metadata } from "next";
+import { LegalPage } from "@/components/sections/LegalPage";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "How APOC Labs handles your information: we only collect the email you give us, use no ad or analytics trackers, and delete data on request.",
+  alternates: { canonical: "/privacy" },
+};
 
 export default function PrivacyPage() {
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-white text-zinc-900 font-sans">
-      {/* Top Header */}
-      <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md">
-        <div className="mx-auto max-w-4xl px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-xs font-mono text-zinc-600 hover:text-black transition-colors"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Back to Home</span>
-          </Link>
-          <Link href="/" className="inline-flex items-center">
-            <Image
-              src="/apoclogo.png"
-              alt="APOC"
-              width={95}
-              height={26}
-              className="h-6 w-auto object-contain"
-            />
-          </Link>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="flex-1 max-w-3xl mx-auto px-6 py-12 space-y-8">
-        <div className="space-y-2 border-b border-black/10 pb-6">
-          <span className="text-xs uppercase tracking-widest text-zinc-500 font-mono">
-            PRIVACY CHARTER
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-zinc-950">
-            Privacy Policy
-          </h1>
-          <p className="text-xs font-mono text-zinc-500">
-            Effective Date: September 2026
-          </p>
-        </div>
-
-        <div className="space-y-6 text-sm text-zinc-700 leading-relaxed font-sans">
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              1. Local-First Sovereignty
-            </h2>
-            <p>
-              Apoc is designed from the ground up on the principle of local-first privacy. Your model inference,
-              system state, episodic memory, task traces, and workspace files default entirely to your local physical hardware.
-              We do not route, stream, or inspect your private interactions on central servers.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              2. Zero Cloud Data Ingestion
-            </h2>
-            <p>
-              Your source code, proprietary documents, terminal output, and conversational instructions are never collected
-              or used to train public foundation models. The physical machine acts as an impenetrable sovereign perimeter for your digital work.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              3. Telemetry and Analytics Policy
-            </h2>
-            <p>
-              Apoc does not install tracking daemons, behavioral beacons, or telemetry probes by default. Any diagnostic logs generated
-              during execution remain strictly within your on-device SQLite database and can be exported, inspected, or erased at any time.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              4. Secrets and Scoped Credential Storage
-            </h2>
-            <p>
-              Sensitive credentials, API keys, and environment tokens are stored in hardware-encrypted local vaults.
-              The Agent OS isolates credentials so raw tokens are never leaked into model context windows, prompt transcripts, or execution logs.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              5. Waitlist Information
-            </h2>
-            <p>
-              When you submit your email for our pre-order waitlist, we collect only your email address for the sole purpose of notifying you
-              about hardware batch availability and shipping schedules. We never sell, rent, or share your contact information with third parties.
-            </p>
-          </section>
-        </div>
-      </main>
-
-      {/* Clean Footer */}
-      <Footer />
-    </div>
+    <LegalPage
+      title="Privacy Policy"
+      effective="November 2026"
+      intro="We collect as little as possible. Here is exactly what we take, why, and what you can ask us to do with it."
+      sections={[
+        {
+          title: "What we collect",
+          body: "Only what you choose to give us: your email address if you join early access, and whatever you include if you email us. We do not ask for anything else, and you do not need an account to use this site.",
+        },
+        {
+          title: "How we use it",
+          body: "We use your email to send early access news about APOC C1 and to reply to your messages. That is all. We do not use it for advertising and we do not sell, rent or trade it.",
+        },
+        {
+          title: "Cookies and tracking",
+          body: "This site does not use advertising or analytics trackers. Your browser may store a small preference, such as display settings, on your own device. Like most websites, our hosting provider may keep standard server logs, such as IP address and browser type, to keep the site secure and running.",
+        },
+        {
+          title: "Who we share it with",
+          body: "Nobody, except the service providers we need to run this site and send email, and only for that purpose. We would also disclose information if the law required us to.",
+        },
+        {
+          title: "How long we keep it",
+          body: "We keep your email while early access is running or while we are talking with you, and delete it when it is no longer needed or when you ask us to.",
+        },
+        {
+          title: "Your choices",
+          body: "You can ask us at any time to see the information we hold about you, correct it, or delete it, or to stop emailing you. Just write to charan@apoc.in and we will take care of it.",
+        },
+        {
+          title: "Changes to this policy",
+          body: "If we change how we handle your information, we will update this page and its effective date. If a change is significant, we will tell early access members by email.",
+        },
+      ]}
+    />
   );
 }

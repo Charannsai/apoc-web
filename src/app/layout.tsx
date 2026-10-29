@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE, ORG_ID, WEBSITE_ID, jsonLdScript } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,59 +16,49 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apoc.in"),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "APOC Labs - Adaptable AI Systems & APOC C1 Agent Computing",
+    default: "APOC Labs: APOC C1 Agent Computer and Molecular AI Chip",
     template: "%s | APOC Labs",
   },
   description:
-    "APOC Labs is an AI-driven technology company building intelligent solutions tailored to the evolving needs of businesses and industries across mobility, manufacturing, and enterprise operations.",
+    "APOC Labs (apoc.in) builds AI hardware: APOC C1, an agent computer that runs AI agents on your own infrastructure, and the APOC Molecular Chip for energy-efficient local AI.",
   applicationName: "APOC Labs",
   keywords: [
+    "APOC",
     "APOC Labs",
-    "APOC C1",
     "apoc.in",
-    "Adaptable AI Systems",
-    "Applied AI",
-    "Intelligent Automation",
-    "Edge Computing",
-    "Agent Computer",
-    "Agent OS",
-    "Physical AI Hardware",
-    "Mobility AI",
-    "Manufacturing AI",
-    "Enterprise AI",
-    "Emerging AI Architectures",
+    "APOC C1",
+    "APOC agent computer",
+    "APOC molecular chip",
+    "molecular chip",
+    "molecular AI chip",
+    "molecular compute-in-memory",
+    "compute-in-memory AI chip",
+    "agent computer",
+    "AI agent hardware",
+    "on-prem AI agents",
+    "local LLM accelerator",
+    "energy-efficient AI inference",
   ],
-  authors: [{ name: "APOC Labs", url: "https://apoc.in" }],
+  authors: [{ name: "APOC Labs", url: SITE.url }],
   creator: "APOC Labs",
   publisher: "APOC Labs",
-  alternates: {
-    canonical: "https://apoc.in",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "APOC Labs - Adaptable AI Systems & APOC C1 Agent Computing",
+    title: "APOC Labs: APOC C1 Agent Computer and Molecular AI Chip",
     description:
-      "Bridging the gap between advanced AI research and real-world applications across mobility, manufacturing, and enterprise operations.",
-    url: "https://apoc.in",
+      "AI hardware built for real-world execution. APOC C1 runs AI agents on your own infrastructure; the APOC Molecular Chip researches energy-efficient local AI.",
+    url: SITE.url,
     siteName: "APOC Labs",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: "https://apoc.in/apoclogo.png",
-        width: 1200,
-        height: 630,
-        alt: "APOC Labs - Adaptable AI Systems",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "APOC Labs - Adaptable AI Systems & APOC C1 Agent Computing",
+    title: "APOC Labs: APOC C1 Agent Computer and Molecular AI Chip",
     description:
-      "Bridging the gap between advanced AI research and real-world applications across mobility, manufacturing, and enterprise operations.",
-    images: ["https://apoc.in/apoclogo.png"],
+      "AI hardware built for real-world execution. APOC C1 runs AI agents on your own infrastructure; the APOC Molecular Chip researches energy-efficient local AI.",
     creator: "@apoc_in",
     site: "@apoc_in",
   },
@@ -82,13 +73,10 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  icons: {
-    icon: "/apoclogo.png",
-    shortcut: "/apoclogo.png",
-    apple: "/apoclogo.png",
-  },
   category: "technology",
   manifest: "/manifest.webmanifest",
+  // Paste the verification codes from Google Search Console / Bing Webmaster Tools here.
+  // verification: { google: "", other: { "msvalidate.01": "" } },
 };
 
 export default function RootLayout({
@@ -96,157 +84,53 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Comprehensive Schema.org Graph for SEO, AEO & GEO
+  // Site-wide entity graph: who APOC Labs is, its website, and its two products.
+  // Page-specific data (home page, FAQ, products, breadcrumbs) lives on each page.
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://apoc.in/#organization",
-        "name": "APOC Labs",
-        "url": "https://apoc.in",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://apoc.in/apoclogo.png",
+        "@id": ORG_ID,
+        name: SITE.name,
+        alternateName: SITE.alternateNames,
+        url: SITE.url,
+        logo: { "@type": "ImageObject", url: SITE.logo, width: 2172, height: 724 },
+        description: SITE.description,
+        email: SITE.email,
+        slogan: SITE.tagline,
+        knowsAbout: [
+          "AI agents",
+          "Agent computers",
+          "Edge AI hardware",
+          "On-premises AI",
+          "Compute-in-memory",
+          "Molecular electronics",
+          "Molecular memristors",
+          "Energy-efficient AI inference",
+          "Large language model inference",
+        ],
+        brand: [
+          { "@type": "Brand", name: "APOC" },
+          { "@type": "Brand", name: "APOC C1" },
+        ],
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "sales and partnerships",
+          email: SITE.email,
+          availableLanguage: ["English"],
         },
-        "description":
-          "AI-driven technology company building intelligent solutions tailored to the evolving needs of businesses and industries across mobility, manufacturing, and enterprise operations.",
-        "email": "team@apoc.in",
-        "sameAs": ["https://x.com/apoc_in"],
+        sameAs: SITE.sameAs,
       },
       {
         "@type": "WebSite",
-        "@id": "https://apoc.in/#website",
-        "url": "https://apoc.in",
-        "name": "APOC Labs",
-        "description":
-          "Adaptable AI systems and purpose-built agent computing for real-world industries.",
-        "publisher": {
-          "@id": "https://apoc.in/#organization",
-        },
-        "inLanguage": "en-US",
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://apoc.in/#software",
-        "name": "APOC C1",
-        "applicationCategory": "DeveloperApplication, ArtificialIntelligence, BusinessApplication",
-        "operatingSystem": "Agent OS",
-        "url": "https://apoc.in",
-        "description":
-          "APOC C1 is an agent computer designed to bring AI computing and agent capabilities into one environment. Purpose-built for adaptable AI across industries.",
-        "offers": {
-          "@type": "Offer",
-          "availability": "https://schema.org/PreOrder",
-          "price": "0",
-          "priceCurrency": "USD",
-          "url": "https://apoc.in",
-        },
-        "featureList": [
-          "Applied AI and intelligent automation",
-          "Industry-specific operational adaptation",
-          "Dedicated neural compute and Agent OS",
-          "Dynamic model routing",
-          "Capability != Authority governance",
-          "Edge and air-gapped deployment",
-        ],
-      },
-      {
-        "@type": "Product",
-        "@id": "https://apoc.in/#product",
-        "name": "APOC C1 Agent Computer",
-        "image": "https://apoc.in/apoclogo.png",
-        "description":
-          "Purpose-built agent computer bringing AI compute and agent capabilities into one unified environment across Core, Edge, and Pro tiers.",
-        "brand": {
-          "@type": "Brand",
-          "name": "APOC Labs",
-        },
-        "offers": {
-          "@type": "Offer",
-          "availability": "https://schema.org/PreOrder",
-          "price": "0",
-          "priceCurrency": "USD",
-          "url": "https://apoc.in",
-        },
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://apoc.in/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is APOC Labs?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "APOC Labs is an AI-driven technology company building intelligent solutions tailored to the evolving needs of businesses and industries. We aim to bridge the gap between advanced AI research and real-world applications by developing adaptable AI systems that address industry-specific challenges across mobility, manufacturing, enterprise operations, and other technology-driven sectors.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "What is APOC C1?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "APOC C1 is our first product—an agent computer designed to bring AI computing and agent capabilities into one environment. APOC Labs builds the solutions, and APOC C1 is the first step toward making adaptable AI practical across industries.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "What industries does APOC Labs serve?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "APOC Labs focuses on mobility, manufacturing, enterprise operations, healthcare, and finance, delivering adaptable AI solutions suited to each industry's operational environment, infrastructure, and data requirements.",
-            },
-          },
-          {
-            "@type": "Question",
-            "name": "How does APOC Labs approach enterprise collaboration?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We collaborate with industry partners to identify high-value use cases, develop proof-of-concept solutions, and scale successful innovations into practical deployments.",
-            },
-          },
-        ],
-      },
-      {
-        "@type": "ItemList",
-        "itemListElement": [
-          {
-            "@type": "SiteNavigationElement",
-            "position": 1,
-            "name": "About APOC Labs",
-            "description": "The mission, approach, and leadership behind APOC Labs.",
-            "url": "https://apoc.in/about",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 2,
-            "name": "Contact",
-            "description": "Collaborate on proof-of-concept solutions and enterprise pilots.",
-            "url": "https://apoc.in/contact",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 3,
-            "name": "Security",
-            "description": "Capability != Authority model and runtime governance.",
-            "url": "https://apoc.in/security",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 4,
-            "name": "Privacy Policy",
-            "description": "Local-first sovereignty and zero cloud data ingestion.",
-            "url": "https://apoc.in/privacy",
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 5,
-            "name": "Terms of Service",
-            "description": "Hardware ownership and Agent OS licensing terms.",
-            "url": "https://apoc.in/terms",
-          },
-        ],
+        "@id": WEBSITE_ID,
+        url: SITE.url,
+        name: SITE.name,
+        alternateName: SITE.alternateNames,
+        description: SITE.description,
+        publisher: { "@id": ORG_ID },
+        inLanguage: "en",
       },
     ],
   };
@@ -260,7 +144,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={jsonLdScript(jsonLd)}
         />
         <script
           dangerouslySetInnerHTML={{
@@ -315,7 +199,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="min-h-screen bg-white text-zinc-900 flex flex-col font-sans selection:bg-black selection:text-white"
+        className="min-h-screen bg-[#fbf9f5] text-zinc-900 flex flex-col font-sans selection:bg-black selection:text-white"
       >
         {children}
       </body>

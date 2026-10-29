@@ -1,110 +1,49 @@
-"use client";
-
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
-import { Footer } from "@/components/Footer";
+import type { Metadata } from "next";
+import { LegalPage } from "@/components/sections/LegalPage";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "The terms for using apoc.in and joining APOC C1 early access, in plain language.",
+  alternates: { canonical: "/terms" },
+};
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen flex flex-col justify-between bg-white text-zinc-900 font-sans">
-      {/* Top Header */}
-      <header className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md">
-        <div className="mx-auto max-w-4xl px-6 py-4 flex items-center justify-between">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-xs font-mono text-zinc-600 hover:text-black transition-colors"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            <span>Back to Home</span>
-          </Link>
-          <Link href="/" className="inline-flex items-center">
-            <Image
-              src="/apoclogo.png"
-              alt="APOC"
-              width={95}
-              height={26}
-              className="h-6 w-auto object-contain"
-            />
-          </Link>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="flex-1 max-w-3xl mx-auto px-6 py-12 space-y-8">
-        <div className="space-y-2 border-b border-black/10 pb-6">
-          <span className="text-xs uppercase tracking-widest text-zinc-500 font-mono">
-            LEGAL DOCUMENTATION
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-normal tracking-tight text-zinc-950">
-            Terms of Service
-          </h1>
-          <p className="text-xs font-mono text-zinc-500">
-            Effective Date: September 2026
-          </p>
-        </div>
-
-        <div className="space-y-6 text-sm text-zinc-700 leading-relaxed font-sans">
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              1. Scope and Physical Hardware Ownership
-            </h2>
-            <p>
-              When purchasing an Apoc physical device, you acquire full ownership of the tangible hardware unit.
-              The device operates as a self-contained, local-first control layer for autonomous agent workloads.
-              You retain sovereign authority over the physical machine, its network interfaces, local storage, and connected peripherals.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              2. Agent OS License and Software Rights
-            </h2>
-            <p>
-              Apoc Agent OS is provided as pre-loaded runtime software. We grant you a perpetual, non-exclusive license to operate
-              the Agent OS on your authorized Apoc hardware. You may configure capabilities, connect native tools, install Model Context
-              Protocol (MCP) adapters, and execute custom workflows without external licensing constraints.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              3. The Capability != Authority Security Principle
-            </h2>
-            <p>
-              Apoc is architected around the explicit separation of capability and authority. While the system may inspect and discover
-              available tools in your environment, execution authority remains strictly under user control. By using Apoc, you acknowledge
-              that granting authorization to privileged actions (such as filesystem modifications, shell execution, or network calls) is
-              at your sole discretion and responsibility.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              4. Limitation of Liability for Autonomous Workflows
-            </h2>
-            <p>
-              Apoc incorporates deterministic recovery engines, loop prevention, and evidence-based verification. However, autonomous agents
-              interact with external software, third-party repositories, and live environments. Apoc Systems is not liable for data loss,
-              system downtime, or unexpected software changes resulting from user-authorized operations or external API drift.
-            </p>
-          </section>
-
-          <section className="space-y-2">
-            <h2 className="text-base font-semibold text-zinc-950">
-              5. Local Storage and Pre-Order Policies
-            </h2>
-            <p>
-              Pre-order waitlist reservations secure priority production allocation for upcoming physical hardware batches. Reservations
-              can be cancelled or refunded prior to final manufacturing dispatch according to our standard hardware fulfillment terms.
-            </p>
-          </section>
-        </div>
-      </main>
-
-      {/* Clean Footer */}
-      <Footer />
-    </div>
+    <LegalPage
+      title="Terms of Service"
+      effective="November 2026"
+      intro="These terms apply when you use apoc.in or join APOC early access. Plain language, no surprises."
+      sections={[
+        {
+          title: "Who we are",
+          body: "APOC Labs builds AI hardware and systems, including the APOC C1 agent computer and research into a molecular AI chip. In these terms, \"APOC\", \"we\" and \"us\" mean APOC Labs, and \"you\" means anyone using this website.",
+        },
+        {
+          title: "Using this website",
+          body: "You can browse this site, read about our products and contact us freely. Please do not misuse it: no attempts to break, overload or gain unauthorised access to the site, and no automated scraping that disrupts it.",
+        },
+        {
+          title: "Early access",
+          body: "Joining early access only means you would like to hear from us about APOC C1. It is not an order, a reservation or a payment, and it does not commit either of us to anything. You can ask to be removed at any time.",
+        },
+        {
+          title: "Products and research",
+          body: "APOC C1 is offered through early access, and specifications, configurations and availability may change before release. The molecular chip is a research project. Anything we describe about it reflects ongoing work, not a product you can buy. Any future purchase will come with its own written terms.",
+        },
+        {
+          title: "Our content",
+          body: "The text, design, logos and images on this site belong to APOC Labs. You are welcome to link to us and share our pages, but please do not copy or reuse our branding or content as your own without permission.",
+        },
+        {
+          title: "No guarantees",
+          body: "We work to keep the information here accurate and the site available, but it is provided as is. To the extent the law allows, APOC Labs is not liable for losses arising from your use of this website or from relying on information that later changes.",
+        },
+        {
+          title: "Changes to these terms",
+          body: "We may update these terms as APOC grows. When we do, we will change the effective date at the top of this page. Continuing to use the site after an update means you accept the new version.",
+        },
+      ]}
+    />
   );
 }

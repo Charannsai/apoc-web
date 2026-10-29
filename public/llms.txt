@@ -1,26 +1,25 @@
-# APOC: Physical AI Hardware & Agent OS
-> Official website: https://apoc.in
+# APOC Labs
 
-## Overview
-APOC (Agent Pocket) is a physical, local-first AI platform and development environment combining dedicated on-device compute with a loaded Agent OS runtime. Sovereign, private, and built for real execution.
+> APOC Labs (apoc.in) is an AI hardware and systems company. It builds APOC C1, an agent computer that runs AI agents on a company's own infrastructure, and is researching the APOC Molecular Chip, a molecular compute-in-memory chip for energy-efficient local AI.
 
-Apoc C1 is an AI-native development environment designed for the agentic era. It brings developers, AI agents, development tools, and project environments into a unified workspace.
+Official website: https://apoc.in
+Contact: charan@apoc.in
+Name: "APOC" is written in capitals. Also referred to as APOC, APOC AI or Apoc Labs.
 
-Developers can use C1 to work with AI agents that understand their project, access relevant tools, execute development tasks, and collaborate with them throughout the software development process. Instead of switching between an IDE, AI assistants, terminals, documentation, and other tools, C1 brings these interactions into one environment.
+## Products
 
-The product is designed around a human and agent collaboration model, where developers remain in control while AI agents handle tasks, explore solutions, modify code, and execute workflows. This enables developers to move from manually writing every part of an application toward directing and supervising intelligent agents that can contribute across the development lifecycle.
+- APOC C1 (early access): an agent computer combining local AI compute, an agent operating system and secure gateways so AI agents can run around the clock inside your own environment. Three configurations: Edge (AMD Ryzen AI 7 350, 32GB), Core (AMD Ryzen AI 9 HX 370, 64GB) and Pro (AMD Ryzen AI Max+ 395, 128GB).
+- APOC Molecular Chip (in research): stores an AI model's weights in molecular memory cells and computes where they are stored, removing most data movement. Goal: a plug-in accelerator that runs large language models locally at a fraction of today's energy. The design is modelled and simulated; it is not a fabricated or purchasable chip.
 
-## Core Pillars
+## Pages
 
-1. **Sovereign Physical Compute**: Dedicated local neural acceleration ensures sensitive code, proprietary datasets, and agent actions remain strictly inside your physical workspace perimeter. Zero cloud surveillance or unsolicited telemetry.
-2. **Pre-loaded Agent OS**: A purpose-built operating system layer that bridges model reasoning with system-level process execution, sandboxed filesystem access, and tool invocation.
-3. **Security Model: Capability != Authority**: In conventional agent frameworks, tool discovery equates to execution authority. In Apoc, actions with real-world side effects require cryptographic verification or interactive human sign-off.
-4. **Evidence-Driven Verification**: No task is marked complete based on conversational claims. Apoc validates observable runtime proofs (exit codes, open ports, sha256 checksums, and unit tests).
-
-## Navigation & Resources
-- [Home & Pre-Order Waitlist](https://apoc.in)
-- [About APOC & Hardware Architecture](https://apoc.in/about)
-- [Security & Trust Model](https://apoc.in/security)
+- [Home](https://apoc.in): overview and early access sign-up
+- [Products](https://apoc.in/products): APOC C1 configurations and the APOC Molecular Chip
+- [About](https://apoc.in/about): mission, roadmap and focus industries
+- [FAQ](https://apoc.in/faq): common questions about APOC Labs, APOC C1 and the molecular chip
 - [Privacy Policy](https://apoc.in/privacy)
 - [Terms of Service](https://apoc.in/terms)
-- [Full LLM Documentation](https://apoc.in/llms-full.txt)
+
+## Optional
+
+- [Full reference for language models](https://apoc.in/llms-full.txt)

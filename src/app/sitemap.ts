@@ -1,39 +1,20 @@
 import { MetadataRoute } from "next";
+import { SITE } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://apoc.in";
   const now = new Date();
+  const page = (
+    path: string,
+    priority: number,
+    changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]
+  ) => ({ url: `${SITE.url}${path}`, lastModified: now, changeFrequency, priority });
 
   return [
-    {
-      url: baseUrl,
-      lastModified: now,
-      changeFrequency: "daily",
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/security`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
+    page("", 1.0, "weekly"),
+    page("/products", 0.9, "weekly"),
+    page("/about", 0.8, "monthly"),
+    page("/faq", 0.8, "monthly"),
+    page("/privacy", 0.3, "yearly"),
+    page("/terms", 0.3, "yearly"),
   ];
 }

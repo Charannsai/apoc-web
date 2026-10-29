@@ -1,21 +1,15 @@
 import { MetadataRoute } from "next";
+import { SITE } from "@/lib/site";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "APOC - Physical AI Hardware & Agent OS",
+    name: "APOC Labs",
     short_name: "APOC",
-    description:
-      "APOC C1 is an AI-native development environment designed for the agentic era. Dedicated physical compute coupled with loaded Agent OS runtime.",
+    description: SITE.description,
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#000000",
-    icons: [
-      {
-        src: "/apoclogo.png",
-        sizes: "192x192 512x512",
-        type: "image/png",
-      },
-    ],
+    background_color: "#fbf9f5",
+    theme_color: "#1d1d1d",
+    icons: [{ src: "/icon", sizes: "512x512", type: "image/png" }],
   };
 }

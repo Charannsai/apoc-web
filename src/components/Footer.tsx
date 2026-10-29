@@ -34,24 +34,21 @@ export function Footer({ transparent = false }: FooterProps) {
           </div>
 
           {/* Right: Sitelinks */}
-          <nav aria-label="Footer Navigation" className="flex flex-wrap items-center gap-5 sm:gap-6 text-xs font-sans">
+          <nav aria-label="Footer Navigation" className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-6 text-xs font-sans">
+            <Link href="/products" className="text-zinc-600 hover:text-black font-medium transition-colors">
+              Products
+            </Link>
             <Link
               href="/about"
               className="text-zinc-600 hover:text-black font-medium transition-colors"
             >
               About
             </Link>
-            <Link
-              href="/contact"
-              className="text-zinc-600 hover:text-black font-medium transition-colors"
-            >
+            <a href="mailto:charan@apoc.in" className="text-zinc-600 hover:text-black font-medium transition-colors">
               Contact
-            </Link>
-            <Link
-              href="/security"
-              className="text-zinc-600 hover:text-black font-medium transition-colors"
-            >
-              Security
+            </a>
+            <Link href="/faq" className="text-zinc-600 hover:text-black font-medium transition-colors">
+              FAQ
             </Link>
             <Link
               href="/privacy"
@@ -100,18 +97,9 @@ export function Footer({ transparent = false }: FooterProps) {
           >
             About
           </Link>
-          <Link
-            href="/contact"
-            className="text-zinc-600 hover:text-black transition-colors"
-          >
-            Contact
-          </Link>
-          <Link
-            href="/security"
-            className="text-zinc-600 hover:text-black transition-colors"
-          >
-            Security
-          </Link>
+          <a href="mailto:charan@apoc.in" className="text-zinc-600 hover:text-black transition-colors">
+              Contact
+            </a>
           <Link
             href="/privacy"
             className="text-zinc-600 hover:text-black transition-colors"
