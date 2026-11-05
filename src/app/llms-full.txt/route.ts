@@ -8,7 +8,7 @@ export function GET() {
   const tiers = C1.tiers
     .map(
       (t) =>
-        `- ${C1.name} ${t.name}: ${t.cpu} processor, ${t.memory} memory, ${t.storage} storage, ${t.gpu} graphics. Best for ${t.bestFor}.`
+        `- ${C1.name} ${t.name}: ${t.cpu}, ${t.memory}, ${t.storage}, ${t.gpu}. Best for ${t.bestFor}.`
     )
     .join("\n");
 
@@ -27,7 +27,7 @@ Tagline: ${SITE.tagline}
 
 APOC Labs builds the hardware and systems that let AI do real work, close to where the work happens. AI is moving from answering questions to doing work, and businesses need AI that runs on their own infrastructure, fits their workflows, keeps their data private and stays up all day. APOC Labs works from the computer on the desk down to the chip inside it.
 
-Focus industries: mobility and fleet, manufacturing and robotics, enterprise operations.
+Focus industries: healthcare, finance, IT, robotics.
 
 Roadmap:
 - Now: APOC C1 agent computers, early access open.

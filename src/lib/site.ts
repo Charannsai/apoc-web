@@ -22,9 +22,9 @@ export const C1 = {
   description:
     "APOC C1 is an agent computer from APOC Labs: a dedicated machine that combines local AI compute, an agent operating system and secure gateways so AI agents can run around the clock inside a company's own environment. It comes in three configurations: Edge, Core and Pro.",
   tiers: [
-    { name: "Edge", cpu: "AMD Ryzen AI 7 350", memory: "32GB LPDDR5X", storage: "512GB NVMe SSD", gpu: "Radeon 860M", bestFor: "edge sites, air-gapped environments and on-prem infrastructure" },
-    { name: "Core", cpu: "AMD Ryzen AI 9 HX 370", memory: "64GB LPDDR5X", storage: "1TB NVMe SSD", gpu: "Radeon 890M", bestFor: "internal automation, knowledge work and departmental deployments" },
-    { name: "Pro", cpu: "AMD Ryzen AI Max+ 395", memory: "128GB LPDDR5X", storage: "2TB NVMe SSD", gpu: "Radeon 8060S", bestFor: "multi-agent systems, high-throughput pipelines and heavy data work" },
+    { name: "Edge", cpu: "8-core AI processor", memory: "32GB RAM", storage: "512GB SSD", gpu: "Integrated graphics", bestFor: "edge sites, air-gapped environments and on-prem infrastructure" },
+    { name: "Core", cpu: "12-core AI processor", memory: "64GB RAM", storage: "1TB SSD", gpu: "Performance graphics", bestFor: "internal automation, knowledge work and departmental deployments" },
+    { name: "Pro", cpu: "16-core AI processor", memory: "128GB RAM", storage: "2TB SSD", gpu: "Workstation graphics", bestFor: "multi-agent systems, high-throughput pipelines and heavy data work" },
   ],
   status: "Early access",
 } as const;
@@ -43,7 +43,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What does APOC stand for and how is it written?",
-    a: "APOC is the name of the company and its products, written in capitals: APOC Labs, APOC C1 and the APOC Molecular Chip. The official website is apoc.in.",
+    a: "Two words hide inside the name: Agent Pocket. It is less an abbreviation than a destination. The intelligence that once needed a data centre now sits in a box on your desk, and we will not stop shrinking it until an agent of your own travels with you, in your pocket. The name is always written in capitals: APOC Labs, APOC C1 and the APOC Molecular Chip. The official website is apoc.in.",
   },
   {
     q: "What is APOC C1?",
@@ -51,7 +51,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "What are the APOC C1 configurations?",
-    a: "APOC C1 comes in three configurations. Edge uses an AMD Ryzen AI 7 350 with 32GB of memory, for edge sites and air-gapped environments. Core uses an AMD Ryzen AI 9 HX 370 with 64GB, for everyday automation and knowledge work. Pro uses an AMD Ryzen AI Max+ 395 with 128GB, for multi-agent systems and heavy data work.",
+    a: "APOC C1 comes in three configurations. Edge uses an 8-core AI processor with 32GB of memory, for edge sites and air-gapped environments. Core uses a 12-core AI processor with 64GB, for everyday automation and knowledge work. Pro uses a 16-core AI processor with 128GB, for multi-agent systems and heavy data work.",
   },
   {
     q: "What software runs on APOC C1?",
@@ -79,7 +79,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Which industries does APOC Labs work with?",
-    a: "APOC Labs focuses on mobility and fleet, manufacturing and robotics, and enterprise operations, working with partners on proof-of-concept deployments and scaling the ones that work.",
+    a: "APOC Labs focuses on healthcare, finance, IT and robotics, working with partners on proof-of-concept deployments and scaling the ones that work.",
   },
   {
     q: "How do I contact APOC Labs?",

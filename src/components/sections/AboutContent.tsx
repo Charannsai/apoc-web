@@ -24,7 +24,7 @@ const ROADMAP = [
   },
 ];
 
-const FOCUS = ["Mobility and fleet", "Manufacturing and robotics", "Enterprise operations"];
+const FOCUS = ["Healthcare", "Finance", "IT", "Robotics"];
 
 export function AboutContent({ standalone = false }: { standalone?: boolean }) {
   const Title = standalone ? "h1" : "h2";

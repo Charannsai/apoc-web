@@ -29,7 +29,7 @@ const LD = {
       alternateName: C1.name,
       description: C1.description,
       url: `${SITE.url}/products#apoc-c1`,
-      image: SITE.logo,
+      image: `${SITE.url}/apoc-c1.webp`,
       brand: { "@type": "Brand", name: "APOC" },
       manufacturer: { "@id": ORG_ID },
       category: "AI agent computer",
@@ -38,7 +38,7 @@ const LD = {
         "@type": "Product",
         name: `${C1.name} ${t.name}`,
         model: t.name,
-        description: `${C1.name} ${t.name}: ${t.cpu}, ${t.memory}, ${t.storage}, ${t.gpu} graphics. Best for ${t.bestFor}.`,
+        description: `${C1.name} ${t.name}: ${t.cpu}, ${t.memory}, ${t.storage}, ${t.gpu}. Best for ${t.bestFor}.`,
         brand: { "@type": "Brand", name: "APOC" },
         additionalProperty: [
           { "@type": "PropertyValue", name: "Processor", value: t.cpu },

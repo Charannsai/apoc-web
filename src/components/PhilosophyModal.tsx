@@ -46,7 +46,7 @@ export function PhilosophyModal({ isOpen, onClose }: PhilosophyModalProps) {
           <p>
             <strong className="text-zinc-900 font-medium">APOC Labs</strong> develops adaptable AI systems that explore
             each industry's unique environment to deliver solutions suited to its operational reality, infrastructure,
-            and data constraints across mobility, manufacturing, and enterprise operations.
+            and data constraints across healthcare, finance, IT, and robotics.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">

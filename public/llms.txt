@@ -8,7 +8,7 @@ Name: "APOC" is written in capitals. Also referred to as APOC, APOC AI or Apoc L
 
 ## Products
 
-- APOC C1 (early access): an agent computer combining local AI compute, an agent operating system and secure gateways so AI agents can run around the clock inside your own environment. Three configurations: Edge (AMD Ryzen AI 7 350, 32GB), Core (AMD Ryzen AI 9 HX 370, 64GB) and Pro (AMD Ryzen AI Max+ 395, 128GB).
+- APOC C1 (early access): an agent computer combining local AI compute, an agent operating system and secure gateways so AI agents can run around the clock inside your own environment. Three configurations: Edge (8-core AI processor, 32GB), Core (12-core AI processor, 64GB) and Pro (16-core AI processor, 128GB).
 - APOC Molecular Chip (in research): stores an AI model's weights in molecular memory cells and computes where they are stored, removing most data movement. Goal: a plug-in accelerator that runs large language models locally at a fraction of today's energy. The design is modelled and simulated; it is not a fabricated or purchasable chip.
 
 ## Pages
