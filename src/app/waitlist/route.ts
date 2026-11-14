@@ -41,10 +41,29 @@ export async function POST(request: Request) {
     auth: { persistSession: false },
   });
 
+  // Validate first: an email that already joined gets duplicate feedback
+  // instead of a fresh success.
+  const { data: existing, error: lookupError } = await supabase
+    .from("waitlist")
+    .select("id")
+    .eq("email", email)
+    .maybeSingle();
+
+  if (lookupError) {
+    return NextResponse.json(
+      { ok: false, error: "lookup_failed" },
+      { status: 500 }
+    );
+  }
+
+  if (existing) {
+    return NextResponse.json({ ok: true, duplicate: true });
+  }
+
   const { error } = await supabase.from("waitlist").insert({ email, source });
 
   if (error) {
-    // Postgres unique violation: email already on the list.
+    // Race fallback: Postgres unique violation also means already on the list.
     if (error.code === "23505") {
       return NextResponse.json({ ok: true, duplicate: true });
     }
