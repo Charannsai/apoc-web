@@ -17,6 +17,8 @@ export function WaitlistModal({
 }: WaitlistModalProps) {
   const [email, setEmail] = useState(initialEmail);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [passCode, setPassCode] = useState("POCKET-#0482");
 
   useEffect(() => {
@@ -36,13 +38,28 @@ export function WaitlistModal({
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    const randomNum = Math.floor(100 + Math.random() * 900);
-    setPassCode(`POCKET-#${randomNum}`);
-    setIsSubmitted(true);
-    triggerConfetti();
+    const value = email.trim();
+    if (!value || submitting) return;
+    setSubmitting(true);
+    setSubmitError(false);
+    try {
+      const res = await fetch("/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: value, source: "waitlist_modal" }),
+      });
+      if (!res.ok) throw new Error("waitlist insert failed");
+      const randomNum = Math.floor(100 + Math.random() * 900);
+      setPassCode(`POCKET-#${randomNum}`);
+      setIsSubmitted(true);
+      triggerConfetti();
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -87,11 +104,18 @@ export function WaitlistModal({
                 />
               </div>
 
+              {submitError && (
+                <p className="text-xs text-red-600" role="alert">
+                  Couldn&apos;t save that - please try again.
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="w-full rounded-full bg-black text-white dark:bg-white dark:text-black py-2.5 text-xs font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all active:scale-95 flex items-center justify-center gap-2 font-sans"
+                disabled={submitting}
+                className="w-full rounded-full bg-black text-white dark:bg-white dark:text-black py-2.5 text-xs font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all active:scale-95 flex items-center justify-center gap-2 font-sans disabled:opacity-70"
               >
-                <span>Join Pre-Order Waitlist</span>
+                <span>{submitting ? "Joining..." : "Join Pre-Order Waitlist"}</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </form>

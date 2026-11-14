@@ -60,6 +60,8 @@ export const AnimatedHero = forwardRef<HeroHandle, HeroProps>(function AnimatedH
   const reduce = useReducedMotion();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [focused, setFocused] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -83,17 +85,32 @@ export const AnimatedHero = forwardRef<HeroHandle, HeroProps>(function AnimatedH
     };
   }, [reduce, ready]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    setSubmitted(true);
-    setEmail("");
-    confetti({
-      particleCount: 40,
-      spread: 60,
-      origin: { x: 0.25, y: 0.62 },
-      colors: ["#000000", "#71717a", "#d4d4d8", "#f5c451"],
-    });
+    const value = email.trim();
+    if (!value || submitting) return;
+    setSubmitting(true);
+    setSubmitError(false);
+    try {
+      const res = await fetch("/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: value, source: "hero" }),
+      });
+      if (!res.ok) throw new Error("waitlist insert failed");
+      setSubmitted(true);
+      setEmail("");
+      confetti({
+        particleCount: 40,
+        spread: 60,
+        origin: { x: 0.25, y: 0.62 },
+        colors: ["#000000", "#71717a", "#d4d4d8", "#f5c451"],
+      });
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -173,11 +190,12 @@ export const AnimatedHero = forwardRef<HeroHandle, HeroProps>(function AnimatedH
                   />
                   <motion.button
                     type="submit"
+                    disabled={submitting}
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.96 }}
-                    className="group absolute right-1 top-1 bottom-1 flex items-center gap-1.5 overflow-hidden rounded-full bg-black px-4 text-xs sm:text-[13px] font-medium text-white whitespace-nowrap cursor-pointer"
+                    className="group absolute right-1 top-1 bottom-1 flex items-center gap-1.5 overflow-hidden rounded-full bg-black px-4 text-xs sm:text-[13px] font-medium text-white whitespace-nowrap cursor-pointer disabled:opacity-70"
                   >
-                    <span className="relative">Join Early Access</span>
+                    <span className="relative">{submitting ? "Joining..." : "Join Early Access"}</span>
                     <ArrowRight className="relative h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
                   </motion.button>
                 </motion.form>
@@ -203,6 +221,11 @@ export const AnimatedHero = forwardRef<HeroHandle, HeroProps>(function AnimatedH
               )}
             </AnimatePresence>
           </div>
+          {submitError && !submitted && (
+            <p className="mt-2 text-xs text-red-600" role="alert">
+              Couldn&apos;t save that - please try again.
+            </p>
+          )}
         </div>
       </motion.div>
 
