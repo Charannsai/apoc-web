@@ -60,6 +60,7 @@ export const AnimatedHero = forwardRef<HeroHandle, HeroProps>(function AnimatedH
   const reduce = useReducedMotion();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [alreadyOnList, setAlreadyOnList] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -97,7 +98,16 @@ export const AnimatedHero = forwardRef<HeroHandle, HeroProps>(function AnimatedH
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: value, source: "hero" }),
       });
+      const data = (await res.json().catch(() => null)) as {
+        duplicate?: boolean;
+      } | null;
       if (!res.ok) throw new Error("waitlist insert failed");
+      if (data?.duplicate) {
+        setAlreadyOnList(true);
+        setSubmitted(true);
+        setEmail("");
+        return;
+      }
       setSubmitted(true);
       setEmail("");
       confetti({
@@ -216,7 +226,11 @@ export const AnimatedHero = forwardRef<HeroHandle, HeroProps>(function AnimatedH
                   >
                     <Check className="h-3 w-3 stroke-[2.5]" />
                   </motion.span>
-                  <span className="truncate">You&apos;re on the list for APOC early access.</span>
+                  <span className="truncate">
+                    {alreadyOnList
+                      ? "That email is already on the list for early access."
+                      : "You're on the list for APOC early access."}
+                  </span>
                 </motion.div>
               )}
             </AnimatePresence>
