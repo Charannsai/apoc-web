@@ -17,6 +17,7 @@ export function WaitlistModal({
 }: WaitlistModalProps) {
   const [email, setEmail] = useState(initialEmail);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [alreadyOnList, setAlreadyOnList] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [passCode, setPassCode] = useState("POCKET-#0482");
@@ -50,7 +51,15 @@ export function WaitlistModal({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: value, source: "waitlist_modal" }),
       });
+      const data = (await res.json().catch(() => null)) as {
+        duplicate?: boolean;
+      } | null;
       if (!res.ok) throw new Error("waitlist insert failed");
+      if (data?.duplicate) {
+        setAlreadyOnList(true);
+        setIsSubmitted(true);
+        return;
+      }
       const randomNum = Math.floor(100 + Math.random() * 900);
       setPassCode(`POCKET-#${randomNum}`);
       setIsSubmitted(true);
@@ -128,11 +137,20 @@ export function WaitlistModal({
 
             <div className="space-y-2">
               <h3 className="text-xl font-medium text-zinc-950 dark:text-white font-sans">
-                You are on the waitlist
+                {alreadyOnList ? "You are already on the list" : "You are on the waitlist"}
               </h3>
               <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans">
-                We have reserved priority spot <strong className="text-zinc-950 dark:text-white font-mono">{passCode}</strong> for{" "}
-                <span className="text-zinc-900 dark:text-zinc-200">{email}</span>. You will be notified when pre-orders open.
+                {alreadyOnList ? (
+                  <>
+                    <span className="text-zinc-900 dark:text-zinc-200">{email}</span> already has a
+                    priority spot reserved. You will be notified when pre-orders open.
+                  </>
+                ) : (
+                  <>
+                    We have reserved priority spot <strong className="text-zinc-950 dark:text-white font-mono">{passCode}</strong> for{" "}
+                    <span className="text-zinc-900 dark:text-zinc-200">{email}</span>. You will be notified when pre-orders open.
+                  </>
+                )}
               </p>
             </div>
 
