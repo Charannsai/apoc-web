@@ -17,6 +17,9 @@ export function WaitlistModal({
 }: WaitlistModalProps) {
   const [email, setEmail] = useState(initialEmail);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [alreadyOnList, setAlreadyOnList] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [passCode, setPassCode] = useState("POCKET-#0482");
 
   useEffect(() => {
@@ -36,13 +39,36 @@ export function WaitlistModal({
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
-    const randomNum = Math.floor(100 + Math.random() * 900);
-    setPassCode(`POCKET-#${randomNum}`);
-    setIsSubmitted(true);
-    triggerConfetti();
+    const value = email.trim();
+    if (!value || submitting) return;
+    setSubmitting(true);
+    setSubmitError(false);
+    try {
+      const res = await fetch("/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: value, source: "waitlist_modal" }),
+      });
+      const data = (await res.json().catch(() => null)) as {
+        duplicate?: boolean;
+      } | null;
+      if (!res.ok) throw new Error("waitlist insert failed");
+      if (data?.duplicate) {
+        setAlreadyOnList(true);
+        setIsSubmitted(true);
+        return;
+      }
+      const randomNum = Math.floor(100 + Math.random() * 900);
+      setPassCode(`POCKET-#${randomNum}`);
+      setIsSubmitted(true);
+      triggerConfetti();
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -87,11 +113,18 @@ export function WaitlistModal({
                 />
               </div>
 
+              {submitError && (
+                <p className="text-xs text-red-600" role="alert">
+                  Couldn&apos;t save that - please try again.
+                </p>
+              )}
+
               <button
                 type="submit"
-                className="w-full rounded-full bg-black text-white dark:bg-white dark:text-black py-2.5 text-xs font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all active:scale-95 flex items-center justify-center gap-2 font-sans"
+                disabled={submitting}
+                className="w-full rounded-full bg-black text-white dark:bg-white dark:text-black py-2.5 text-xs font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all active:scale-95 flex items-center justify-center gap-2 font-sans disabled:opacity-70"
               >
-                <span>Join Pre-Order Waitlist</span>
+                <span>{submitting ? "Joining..." : "Join Pre-Order Waitlist"}</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </button>
             </form>
@@ -104,11 +137,20 @@ export function WaitlistModal({
 
             <div className="space-y-2">
               <h3 className="text-xl font-medium text-zinc-950 dark:text-white font-sans">
-                You are on the waitlist
+                {alreadyOnList ? "You are already on the list" : "You are on the waitlist"}
               </h3>
               <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed font-sans">
-                We have reserved priority spot <strong className="text-zinc-950 dark:text-white font-mono">{passCode}</strong> for{" "}
-                <span className="text-zinc-900 dark:text-zinc-200">{email}</span>. You will be notified when pre-orders open.
+                {alreadyOnList ? (
+                  <>
+                    <span className="text-zinc-900 dark:text-zinc-200">{email}</span> already has a
+                    priority spot reserved. You will be notified when pre-orders open.
+                  </>
+                ) : (
+                  <>
+                    We have reserved priority spot <strong className="text-zinc-950 dark:text-white font-mono">{passCode}</strong> for{" "}
+                    <span className="text-zinc-900 dark:text-zinc-200">{email}</span>. You will be notified when pre-orders open.
+                  </>
+                )}
               </p>
             </div>
 
